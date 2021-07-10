@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 //import my components/containers here
+import BookmarkCard from './Card/BookmarkCard';
 
 class App extends Component {
     constructor(props) {
@@ -10,10 +11,11 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Button>
-                    Name
-                </Button>
-                <h1>Welcome to React!</h1>
+                <BookmarkCard
+                    title="Redux state management"
+                    caption="How to manage state in redux"
+                    description="blah"
+                />
             </div>
         )
     }

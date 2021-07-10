@@ -23,9 +23,9 @@ console.log('Hello from index.js!');
 // </Provider>,
 
 ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
+    // <BrowserRouter>
+    <App />,
+    // </BrowserRouter>,
     document.getElementById('reactApp')
 );
 
