@@ -1,22 +1,28 @@
+/********************************************\
+ * App.jsx
+ * 
+ * The base (or top-level) component of our React
+ * front-end
+ * 
+\********************************************/
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-//import my components/containers here
+
+// import any child components/containers here:
+import TestContainer from '../containers/TestContainer';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div>
-                <Button>
-                    Name
-                </Button>
-                <h1>Welcome to React!</h1>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <h1>Welcome to React!</h1>
+        <TestContainer />
+      </div>
+    )
+  }
 };
 
 export default App;
