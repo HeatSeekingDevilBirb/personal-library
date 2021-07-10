@@ -1,7 +1,14 @@
+/********************************************\
+ * App.jsx
+ * 
+ * The base (or top-level) component of our React
+ * front-end
+ * 
+\********************************************/
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-//import my components/containers here
-import BookmarkCard from './Card/BookmarkCard';
+
+// import any child components/containers here:
+import TestContainer from '../containers/TestContainer';
 
 class App extends Component {
     constructor(props) {
@@ -11,11 +18,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <BookmarkCard
-                    title="Redux state management"
-                    caption="How to manage state in redux"
-                    description="blah"
-                />
+                <h1>Welcome to React!</h1>
+                <TestContainer />
             </div>
         )
     }

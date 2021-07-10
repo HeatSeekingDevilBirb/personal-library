@@ -1,3 +1,7 @@
+/********************************************\
+ * webpack.config.js
+ * 
+\********************************************/
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -9,6 +13,9 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
     },
+
+    devtool: 'eval-source-map',
+
     devServer: {
         port: 8080,
         hot: true,
