@@ -8,9 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 // import './main.css';  // ?
 
 // import components
-import App from './components/App';
-
-
+console.log(previewData);
 // A few random logs to confirm that this file is being served.
 console.log('====================');
 console.log('Hello from index.js!');
@@ -23,9 +21,9 @@ console.log('Hello from index.js!');
 // </Provider>,
 
 ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
+    // <BrowserRouter>
+    <App />,
+    // </BrowserRouter>,
     document.getElementById('reactApp')
 );
 
