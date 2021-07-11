@@ -1,0 +1,15 @@
+
+.bookmardCardsContainer{
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  background-color: lightgrey;
+  height: vh; */
+
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-column-gap: 6px;
+  grid-row-gap:6px;
+}

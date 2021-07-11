@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 
 // import any child components/containers here:
-import TestContainer from '../containers/TestContainer';
+import HomeContainer from '../containers/HomeContainer';
 
 class App extends Component {
     constructor(props) {
@@ -18,8 +18,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1>Welcome to React!</h1>
-                <TestContainer />
+                {/* <h1>Welcome to React!</h1> */}
+                <HomeContainer />
             </div>
         )
     }
