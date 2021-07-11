@@ -11,18 +11,18 @@ import React, { Component } from 'react';
 import TestContainer from '../containers/TestContainer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    return (
-      <div>
-        <h1>Welcome to React!</h1>
-        <TestContainer />
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div>
+                <h1>Welcome to React!</h1>
+                <TestContainer />
+            </div>
+        )
+    }
 };
 
 export default App;

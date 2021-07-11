@@ -21,6 +21,7 @@
   "homepage": "https://github.com/GoblinShark44/personal-library#readme",
   "dependencies": {
     "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
     "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
