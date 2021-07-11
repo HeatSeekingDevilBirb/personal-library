@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', apiController.doge, (req, res) => {
-  res.status(200).send(res.body.controllerTest);
+  res.status(200).send(res.locals.controllerTest);
 });
 
 // 404 routing

@@ -14,8 +14,8 @@ const apiController = {};
 
 // ADD MIDDLEWARE TEMPLATE
 apiController.doge = (req, res, next) => {
-    
-  res.locals.controllerTest = 'D O G E';
+  const doge = 'D O G E';
+  res.locals.controllerTest = doge;
   return next();  // keep an eye out in case this needs to become: return next();
 };
 
