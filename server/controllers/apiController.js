@@ -17,8 +17,7 @@ const apiController = {};
 
 apiController.getCategories = (req, res, next) => {
 
-  // const id = req.query.user_id;
-  const userId = 1;
+  const userId = req.body.user.id;
 
   const sqlQuery = {
     text: `SELECT DISTINCT categories.id, categories.name
@@ -41,9 +40,8 @@ apiController.getCategories = (req, res, next) => {
 
 apiController.getBookmarks = (req, res, next) => {
 
-  // const id = req.query.user_id;
-  const userId = 1;
-  const catId = 1;  // <<< COMING FROM REACT (TASH)
+  const userId = req.body.user.id;;
+  const catId = req.body.category.id;  // <<< COMING FROM REACT (TASH)
   // console.log('RESULT', catId)
 
   const sqlQuery = {
@@ -85,11 +83,11 @@ apiController.addBookmark = (req, res, next) => {
 
 apiController.removeBookmark = (req, res, next) => {
 
-  // const {id} = req.body.bookmarks
+  const {bookmarkId} = req.body.bookmark.id
   const sqlQuery = {
       text:   `DELETE FROM bookmarks 
             WHERE bookmarks.id = $1`,
-      values: ['24']
+      values: [bookmarkId]
   }
 
   console.log(sqlQuery)
