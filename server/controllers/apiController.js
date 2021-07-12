@@ -92,7 +92,7 @@ apiController.removeBookmark = (req, res, next) => {
       values: [bookmarkId]
   }
 
-  console.log(sqlQuery)
+  console.log(sqlQuery);
 
   db.query(sqlQuery)
     .then(data => { return next(); })
