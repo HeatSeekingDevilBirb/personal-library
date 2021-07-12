@@ -8,6 +8,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const apiRouter = require('./routes/api');
+
 
 /**
  * Add any external route controllers here.
@@ -18,7 +20,7 @@ const path = require('path');
  * e.g.:
  * const contactController = require('./controllers/contactController.js');
  */
-const apiController = require('./controllers/apiController.js');
+// const apiController = require('./controllers/apiController.js');
 
 // declare port id
 const PORT = 3000;
@@ -34,7 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // serve static data
-app.use(express.static(path.resolve(__dirname, '../client/static/')));
+app.use(express.static(path.resolve(__dirname, '../client')));
 
 // serve static bundle files
 app.use('/dist', express.static(path.resolve(__dirname, '../dist/')));
@@ -44,26 +46,25 @@ app.get('/', (req, res) => {
   res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
 });
 
-app.get('/api', apiController.doge, (req, res) => {
-  res.status(200).send(res.locals.controllerTest);
-});
+app.use('/api', apiRouter);
 
 // 404 routing
 app.use((req, res) => {
   //res.status(404).sendFile(path.resolve(__dirname, '../client/static/status404.html'));
-  res.status(404).send('We regret to inform you that the desired page was not found.');
+  res.status(404).send('404: We regret to inform you that the desired page was not found.');
 })
 
 // Global error handler
-app.use((error, req, res, next) => {
-  
-  console.log(error.log);
-  res.status(500); // set status to 500 by default
-  if (error.status) {
-    res.status(error.status);
-  }
-  res.send(error.message);
-  
+app.use((err, req, res, next) =>{
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+  const errObj = Object.assign({}, defaultErr, err);
+  console.log(errObj.log);
+
+  return res.status(errObj.status).json(errObj.message);
 });
 
 // invoke the listener on the specified port

@@ -1,10 +1,11 @@
+const db = require('../models/libraryModels');
 /********************************************\
  * apiController.js
  * 
  * middleware controller for API calls
  * 
 \********************************************/
-const path = require('path');
+// const path = require('path');
 
 // future database interactios here !
 
@@ -12,12 +13,92 @@ const path = require('path');
 const apiController = {};
 
 
-// ADD MIDDLEWARE TEMPLATE
-apiController.doge = (req, res, next) => {
-  const doge = 'D O G E';
-  res.locals.controllerTest = doge;
-  return next();  // keep an eye out in case this needs to become: return next();
+// FIND CATEGORIES
+
+apiController.getCategories = (req, res, next) => {
+
+  // const id = req.query.user_id;
+  const userId = 1;
+
+  const sqlQuery = {
+    text: `SELECT DISTINCT categories.id, categories.name
+          FROM bookmarks, categories
+          WHERE bookmarks.category_id = categories.id
+          AND user_id = $1;`,
+    values: [userId]
+  };
+
+  //console.log("SQL QUERY ", sqlQuery);
+  db.query(sqlQuery)
+    .then(data => {
+      console.log("SQL DATA ", data);
+      res.locals.categories = data.rows;
+      return next();
+    })
+    .catch(err => { return next(err) });
 };
+
+
+apiController.getBookmarks = (req, res, next) => {
+
+  // const id = req.query.user_id;
+  const userId = 1;
+  const catId = 1;  // <<< COMING FROM REACT (TASH)
+  // console.log('RESULT', catId)
+
+  const sqlQuery = {
+    text: `SELECT *
+          FROM bookmarks
+          WHERE bookmarks.category_id = $1
+          AND user_id = $2;`,
+    values: [catId, userId]
+  };
+
+  //console.log("SQL QUERY ", sqlQuery);
+  db.query(sqlQuery)
+    .then(data => {
+      console.log("SQL DATA ", data);
+      res.locals.bookmarks = data.rows;
+      return next();
+    })
+    .catch(err => { return next(err) });
+};
+
+
+apiController.addBookmark = (req, res, next) => {
+
+  const {title, url, thumbnail, caption, category_id, user_id} = req.body
+
+  const sqlQuery = {
+      text:   `INSERT INTO bookmarks (title, url, thumbnail, caption, category_id, user_id)
+              VALUES ($1, $2, $3, $4, $5, $6)`,
+      values: [title, url, thumbnail, caption, category_id, user_id]
+  }
+
+  console.log(sqlQuery)
+
+  db.query(sqlQuery)
+    .then(data => { return next(); })
+    .catch(err => { return next(err) });
+};
+
+
+apiController.removeBookmark = (req, res, next) => {
+
+  // const {id} = req.body.bookmarks
+  const sqlQuery = {
+      text:   `DELETE FROM bookmarks 
+            WHERE bookmarks.id = $1`,
+      values: ['24']
+  }
+
+  console.log(sqlQuery)
+
+  db.query(sqlQuery)
+    .then(data => { return next(); })
+    .catch(err => { return next(err) });
+};
+
 
 
 module.exports = apiController;
