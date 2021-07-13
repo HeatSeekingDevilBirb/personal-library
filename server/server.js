@@ -9,7 +9,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const apiRouter = require('./routes/api');
-
+// const cors = require('cors'); // not actually needed
 
 /**
  * Add any external route controllers here.
@@ -25,7 +25,8 @@ const apiRouter = require('./routes/api');
 // declare port id
 const PORT = 3000;
 
-// Future Database connection here?
+// add CORS functionality
+// app.use(cors()); //not actually needed / proxy instead
 
 // parse any parameters encoded within the URL and
 // add them to req.params

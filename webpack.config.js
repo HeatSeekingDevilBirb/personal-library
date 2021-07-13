@@ -21,11 +21,14 @@ module.exports = {
         hot: true,
         // publicPath: path.resolve(__dirname, '/dist'),
 
+        // proxy: {
+        //     '/api/**': {    
+        //       target: 'http://localhost:3000/',
+        //       secure: true,
+        //     },
+        // },
         proxy: {
-            '/': {
-              target: 'http://localhost:3000/',
-              secure: false,
-            },
+            '/api': 'http://localhost:3000',
         },
     },
     module: {

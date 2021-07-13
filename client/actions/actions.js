@@ -70,7 +70,7 @@ export const getAllBookmarks_ActionCreator = () => ({
   payload: null,
 });
 
-export const getBookmarksByCategory_ActionCreator = (categoryId) => ({
-  type: types_enum.GET_BOOKMARKS_BY_CATEGORY,
-  payload: categoryId,
+export const updateBookmarksByCategory_ActionCreator = (bookmarkList) => ({
+  type: types_enum.UPDATE_BOOKMARKS_BY_CATEGORY,
+  payload: bookmarkList,
 });

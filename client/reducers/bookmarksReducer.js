@@ -12,6 +12,7 @@ import * as types_enum from '../constants/actionTypes.js';
 // setup initial state for this reducer
 const initialState = {
   bookmarks: [],
+  bookmarksByCategory: [],
 };
 
 // declare the reducer
@@ -34,20 +35,15 @@ const bookmarksReducer = (state = initialState, action) => {
         bookmarks: [mockDb],
       };
 
-    case types_enum.GET_BOOKMARKS_BY_CATEGORY:
+    case types_enum.UPDATE_BOOKMARKS_BY_CATEGORY:
   
       // logic to get all bookmarks by category for the current user
 
       // mockup db data here
-      const mockCatDb = {
-        title: 'Fake Title That Relates to a Category',
-        url: 'fake URL',
-        thumbnail: 'Fake Thumbnail',
-      }
 
       return {
         ...state,
-        bookmarks: [mockCatDb],
+        bookmarksByCategory: action.payload,
       };
 
     default: {

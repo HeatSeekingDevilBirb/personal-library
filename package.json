@@ -7,7 +7,8 @@
     "start": "nodemon ./server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack serve --hot",
-    "prod": "npm run build && NODE_ENV=production webpack serve"
+    "prod": "npm run build && NODE_ENV=production webpack serve",
+    "both": "NODE_ENV=development webpack serve --hot & nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",

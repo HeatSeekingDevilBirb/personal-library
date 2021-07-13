@@ -59,6 +59,12 @@ const mapDispatchToProps = (dispatch) => {
 
       dispatch(actions.updateAllCategories_ActionCreator(categoriesList));
     },
+    updateBookmarksByCategory: (categoriesList) => {
+      if (DEBUG) console.log(`HomeContainer: mapDispatchToProps: updateBookmarksByCategory:`);
+      if (DEBUG) console.log(bookmarksList)
+
+      dispatch(actions.updateBookmarksByCategory_ActionCreator(bookmarksList));
+    },
   }
 };
 
@@ -70,8 +76,8 @@ class HomeContainer extends Component {
 
   componentDidMount(){
 
-    //prove that we can switch users in state
-    this.props.switchUser(2);
+    // prove that we can switch users in state
+    // this.props.switchUser(2);
 
 
     fetch('/api/allcategories/')
@@ -87,6 +93,24 @@ class HomeContainer extends Component {
       .catch(error => {
         console.log(error.log);
       });
+
+      console.log(`HomeContainer: componentDidMount: this.props.userId: ${this.props.userId}`)
+
+      fetch(`/api/bookmarks/${this.props.userId}/1`)
+        .then(response => response.json())
+        .then(data => {
+
+        // console.log(`HomeContainer: componentDidMount: fetch('/api/allcategories/') data:`)
+        // console.log(data)
+
+        this.props.updateBookmarksByCategory(data);
+      
+      })
+      .catch(error => {
+        console.log(error.log);
+      });
+
+
 
     // const myHeaders = new Headers();
     // myHeaders.append("Access-Control-Allow-Origin", true);

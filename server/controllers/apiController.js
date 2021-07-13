@@ -57,8 +57,8 @@ apiController.getAllCategories = (req, res, next) => {
 
 apiController.getBookmarks = (req, res, next) => {
 
-  const userId = req.body.user_id;;
-  const catId = req.body.category_id;  // <<< COMING FROM REACT (TASH)
+  const userId = req.params.userId;;
+  const catId = req.params.categoryId;  // <<< COMING FROM REACT (TASH)
   // console.log('RESULT', catId)
 
   const sqlQuery = {

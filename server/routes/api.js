@@ -12,7 +12,7 @@ router.get('/allcategories', apiController.getAllCategories,
   (req, res) => res.status(200).json(res.locals.categories)
 );
 
-router.get('/bookmarks', apiController.getBookmarks, 
+router.get('/bookmarks/:userId/:categoryId', apiController.getBookmarks, 
   (req, res) => res.status(200).json(res.locals.bookmarks)
 );
 
