@@ -44,7 +44,7 @@ export default function BookmarkCard(props) {
             </CardContent>
             <CardActions disableSpacing={false}>
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
-                <Button variant="outlined">Default</Button>
+                <Button variant="outlined">no props button</Button>
             </CardActions>
         </Card>
     );
