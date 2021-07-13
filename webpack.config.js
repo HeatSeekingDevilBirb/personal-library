@@ -22,10 +22,15 @@ module.exports = {
         // publicPath: path.resolve(__dirname, '/dist'),
 
         // proxy: {
-        //   '/': 'http://localhost:3000',
+        //     '/api/**': {    
+        //       target: 'http://localhost:3000/',
+        //       secure: true,
+        //     },
         // },
+        proxy: {
+            '/api': 'http://localhost:3000',
+        },
     },
-
     module: {
         rules: [
             {
@@ -58,6 +63,3 @@ module.exports = {
 
     ],
 };
-
-
-

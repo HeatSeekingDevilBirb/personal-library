@@ -26,18 +26,18 @@ const DEBUG = true;
  * @param {object} state current application state served by Redux store
  * @returns {object} 
  */
-const mapStateToProps = state => {
+// const mapStateToProps = state => {
     
-  const { test } = state;
+//   const { test } = state;
 
-  // if (DEBUG) console.log('TestContainer: mapStateToProps: testBool: ', test.testPropBool);
-  // if (DEBUG) console.log('TestContainer: mapStateToProps: testString: ', test.testPropString);
+//   // if (DEBUG) console.log('TestContainer: mapStateToProps: testBool: ', test.testPropBool);
+//   // if (DEBUG) console.log('TestContainer: mapStateToProps: testString: ', test.testPropString);
 
-  return {
-    testBool: test.testPropBool,
-    testString: test.testPropString,
-  };
-};
+//   return {
+//     testBool: test.testPropBool,
+//     testString: test.testPropString,
+//   };
+// };
 
 /**
  * map action dispatch to local properties as callback functions
@@ -99,4 +99,4 @@ class BookmarkCardsContainer extends Component {
  * 
  * NOTE: replace mapping functions with null if you don't want to utilize them
  */
-export default connect(mapStateToProps, mapDispatchToProps)(BookmarkCardsContainer);
+export default connect(null, mapDispatchToProps)(BookmarkCardsContainer);

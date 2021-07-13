@@ -27,14 +27,14 @@ const DEBUG = true;
  */
 const mapStateToProps = state => {
     
-  const { test } = state;
+  const { user } = state;
 
   // if (DEBUG) console.log('TestContainer: mapStateToProps: testBool: ', test.testPropBool);
   // if (DEBUG) console.log('TestContainer: mapStateToProps: testString: ', test.testPropString);
 
   return {
-    testBool: test.testPropBool,
-    testString: test.testPropString,
+    userId: user.userId,
+    userName: user.userName,
   };
 };
 
@@ -45,22 +45,92 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   // create functions that will dispatch action creators
   return {
-    updateTestBool: (event) => {
-      if (DEBUG) console.log(`TestContainer: mapDispatchToProps: updateTestBool: ${event.target.value}`);
-      dispatch(actions.updateTestBool_ActionCreator());
+    switchUser: (newUserId) => {
+      if (DEBUG) console.log(`HomeContainer: mapDispatchToProps: switchUser: ${newUserId}`);
+      dispatch(actions.switchUser_ActionCreator(newUserId));
     },
-    updateTestString: (event) => {
-      if (DEBUG) console.log(`TestContainer: mapDispatchToProps: updateTestString: ${event.target.value}`);
-      dispatch(actions.updateTestString_ActionCreator(event.target.value));
+    getCurrentUser: () => {
+      if (DEBUG) console.log(`HomeContainer: mapDispatchToProps: getCurrentUser: `);
+      dispatch(actions.getCurrentUser_ActionCreator());
+    },
+    updateAllCategories: (categoriesList) => {
+      if (DEBUG) console.log(`HomeContainer: mapDispatchToProps: updateAllCategories:`);
+      if (DEBUG) console.log(categoriesList)
+
+      dispatch(actions.updateAllCategories_ActionCreator(categoriesList));
+    },
+    updateBookmarksByCategory: (categoriesList) => {
+      if (DEBUG) console.log(`HomeContainer: mapDispatchToProps: updateBookmarksByCategory:`);
+      if (DEBUG) console.log(bookmarksList)
+
+      dispatch(actions.updateBookmarksByCategory_ActionCreator(bookmarksList));
     },
   }
 };
-
 
 class HomeContainer extends Component {
   constructor(props){
     super(props);
 
+  }
+
+  componentDidMount(){
+
+    // prove that we can switch users in state
+    // this.props.switchUser(2);
+
+
+    fetch('/api/allcategories/')
+      .then(response => response.json())
+      .then(data => {
+
+        // console.log(`HomeContainer: componentDidMount: fetch('/api/allcategories/') data:`)
+        // console.log(data)
+
+        this.props.updateAllCategories(data);
+      
+      })
+      .catch(error => {
+        console.log(error.log);
+      });
+
+      console.log(`HomeContainer: componentDidMount: this.props.userId: ${this.props.userId}`)
+
+      fetch(`/api/bookmarks/${this.props.userId}/1`)
+        .then(response => response.json())
+        .then(data => {
+
+        // console.log(`HomeContainer: componentDidMount: fetch('/api/allcategories/') data:`)
+        // console.log(data)
+
+        this.props.updateBookmarksByCategory(data);
+      
+      })
+      .catch(error => {
+        console.log(error.log);
+      });
+
+
+
+    // const myHeaders = new Headers();
+    // myHeaders.append("Access-Control-Allow-Origin", true);
+    // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    // const urlencoded = new URLSearchParams();
+    // urlencoded.append("user_id", "1");
+
+    // const requestOptions = {
+    //   method: 'GET',
+    //   headers: myHeaders,
+    //   //body: urlencoded,
+    //   redirect: 'follow'
+    // };
+
+    // fetch("http://localhost:3000/api/categories", requestOptions)
+    //   .then(response => response.text())
+    //   .then(result => console.log(result))
+    //   .catch(error => console.log('error', error));
+        
   }
 
   render(){
