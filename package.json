@@ -1,0 +1,54 @@
+{
+  "name": "personal-library",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development webpack serve --hot",
+    "prod": "npm run build && NODE_ENV=production webpack serve",
+    "both": "NODE_ENV=development webpack serve --hot & nodemon ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoblinShark44/personal-library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoblinShark44/personal-library/issues"
+  },
+  "homepage": "https://github.com/GoblinShark44/personal-library#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
+    "express": "^4.17.1",
+    "pg": "^8.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/runtime": "^7.14.6",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^6.2.0",
+    "css-loader": "^5.2.6",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "html-webpack-plugin": "^5.3.2",
+    "nodemon": "^2.0.11",
+    "redux-devtools-extension": "^2.13.9",
+    "style-loader": "^3.0.0",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
