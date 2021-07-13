@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon ./server/server.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development webpack serve --hot",
+    "two": "NODE_ENV=development nodemon server/server.js",
+    "one": "NODE_ENV=development webpack serve --hot",
+    "dev": "concurrently \"npm run one\" \"npm run two\"",
     "prod": "npm run build && NODE_ENV=production webpack serve",
     "both": "NODE_ENV=development webpack serve --hot & nodemon ./server/server.js"
   },
@@ -28,7 +30,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

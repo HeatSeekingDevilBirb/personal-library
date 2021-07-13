@@ -17,10 +17,8 @@ const initialState = {
 
 // declare the reducer
 const bookmarksReducer = (state = initialState, action) => {
-    
   switch (action.type) {
     case types_enum.GET_ALL_BOOKMARKS:
-    
       // logic to get all bookmarks for the current user
 
       // mockup db data here
@@ -28,7 +26,7 @@ const bookmarksReducer = (state = initialState, action) => {
         title: 'Fake Title',
         url: 'fake URL',
         thumbnail: 'Fake Thumbnail',
-      }
+      };
 
       return {
         ...state,
@@ -36,7 +34,6 @@ const bookmarksReducer = (state = initialState, action) => {
       };
 
     case types_enum.UPDATE_BOOKMARKS_BY_CATEGORY:
-  
       // logic to get all bookmarks by category for the current user
 
       // mockup db data here
@@ -54,7 +51,7 @@ const bookmarksReducer = (state = initialState, action) => {
 
 /**
  * export this reducer to be combined with
- * other reducer state properties 
+ * other reducer state properties
  * within combinedReducers.js
  */
 export default bookmarksReducer;

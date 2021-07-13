@@ -19,7 +19,6 @@
 // import actionType constants
 import * as types_enum from '../constants/actionTypes';
 
-
 // ================================== //
 // TEST action creators
 // ---------------------------------- //
@@ -65,10 +64,15 @@ export const switchCategory_ActionCreator = (nextCategory) => ({
 // ================================== //
 // BOOKMARKS action creators
 // ---------------------------------- //
-export const getAllBookmarks_ActionCreator = () => ({
-  type: types_enum.GET_ALL_BOOKMARKS,
-  payload: null,
-});
+export const getAllBookmarks_ActionCreator = () => (dispatch) => {
+  fetch('http://localhost:3000/api/allcategories') // request
+    .then((response) => response.json())
+    .then((response) => {
+      console.log('get all categries api call', response);
+      dispatch({ type: types_enum.GET_ALL_BOOKMARKS, payload: response });
+    })
+    .catch(console.error);
+};
 
 export const updateBookmarksByCategory_ActionCreator = (bookmarkList) => ({
   type: types_enum.UPDATE_BOOKMARKS_BY_CATEGORY,
