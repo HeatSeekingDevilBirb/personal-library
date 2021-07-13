@@ -30,14 +30,47 @@ export const updateTestBool_ActionCreator = (newBooleanVal) => ({
   payload: newBooleanVal,
 });
 
-// ADD_TICKETING_CONTACT action creator
+// UPDATE_TEST_STRING action creator
 export const updateTestString_ActionCreator = (newStringVal) => ({
   type: types_enum.UPDATE_TEST_STRING,
   payload: newStringVal,
 });
 
 // ================================== //
-// OTHER action creators...
+// USERS action creators
 // ---------------------------------- //
+export const getCurrentUser_ActionCreator = () => ({
+  type: types_enum.GET_CURRENT_USER,
+  payload: null,
+});
 
-// future home of actions belonging to other reducers
+export const switchUser_ActionCreator = (userId) => ({
+  type: types_enum.SWITCH_USER,
+  payload: userId,
+});
+
+// ================================== //
+// CATEGORIES action creators
+// ---------------------------------- //
+export const updateAllCategories_ActionCreator = (categories) => ({
+  type: types_enum.UPDATE_ALL_CATEGORIES,
+  payload: categories,
+});
+
+export const switchCategory_ActionCreator = (nextCategory) => ({
+  type: types_enum.SWITCH_CATEGORY,
+  payload: nextCategory,
+});
+
+// ================================== //
+// BOOKMARKS action creators
+// ---------------------------------- //
+export const getAllBookmarks_ActionCreator = () => ({
+  type: types_enum.GET_ALL_BOOKMARKS,
+  payload: null,
+});
+
+export const getBookmarksByCategory_ActionCreator = (categoryId) => ({
+  type: types_enum.GET_BOOKMARKS_BY_CATEGORY,
+  payload: categoryId,
+});

@@ -21,11 +21,13 @@ module.exports = {
         hot: true,
         // publicPath: path.resolve(__dirname, '/dist'),
 
-        // proxy: {
-        //   '/': 'http://localhost:3000',
-        // },
+        proxy: {
+            '/': {
+              target: 'http://localhost:3000/',
+              secure: false,
+            },
+        },
     },
-
     module: {
         rules: [
             {
@@ -58,6 +60,3 @@ module.exports = {
 
     ],
 };
-
-
-

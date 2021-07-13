@@ -11,6 +11,10 @@ import { combineReducers } from 'redux';
 
 // import ALL reducers here:
 import testReducer from './testReducer';
+import usersReducer from './usersReducer';
+import bookmarksReducer from './bookmarksReducer';
+import categoriesReducer from './categoriesReducer';
+
 
 /**
  * Gather properties from each reducer and
@@ -23,6 +27,9 @@ import testReducer from './testReducer';
  */
 const reducers = combineReducers({
   test: testReducer,
+  user: usersReducer,
+  bookmarks: bookmarksReducer,
+  categories: categoriesReducer,
 });
 
 /**
