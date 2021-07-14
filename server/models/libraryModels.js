@@ -8,7 +8,7 @@ PG_URI is a private variable which is not checked into source control.
 To config the app with DB URI:
 
 1. Add a uri.js file to project root folder
-3. in uri.js:
+2. in uri.js:
 const uri = '<insert your db url here>';
 module.exports = uri;
 
