@@ -1,9 +1,9 @@
-const linkPreviewGenerator = require("link-preview-generator");
+// const linkPreviewGenerator = require("link-preview-generator");
 
-const previewData = await linkPreviewGenerator(
-    "https://www.youtube.com/watch?v=8mqqY2Ji7_g"
-);
-console.log(previewData);
+// const previewData = await linkPreviewGenerator(
+//     "https://www.youtube.com/watch?v=8mqqY2Ji7_g"
+// );
+// console.log(previewData);
 /*
 {
   title: 'Kiteboarding: Stylish Backroll in 4 Sessions - Ride with Blake: Vlog 20',
