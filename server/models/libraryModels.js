@@ -1,9 +1,19 @@
 const { Pool } = require('pg');
-//const uri = require('../uri.js');
+const PG_URI = require('../uri');
 
-const PG_URI =
-  'postgres://jdugwjxq:6OMhL0awW2XmDTMmJ79RgqXtGxZyEGzc@kashin.db.elephantsql.com/jdugwjxq';
-//uri;
+/*
+DB Setup
+PG_URI is a private variable which is not checked into source control.
+
+To config the app with DB URI:
+
+1. Add a uri.js file to project root folder
+3. in uri.js:
+const uri = '<insert your db url here>';
+module.exports = uri;
+
+https://www.elephantsql.com/docs/index.html
+*/
 
 // create a new pool here using the connection string above
 const pool = new Pool({
@@ -19,7 +29,6 @@ const pool = new Pool({
 // This will be required in the controllers to be the access point to the database
 module.exports = {
   query: (text, params, callback) => {
-    // console.log('executed query', text);
     return pool.query(text, params, callback);
   },
 };
