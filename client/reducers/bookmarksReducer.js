@@ -17,20 +17,23 @@ const initialState = {
 
 // declare the reducer
 const bookmarksReducer = (state = initialState, action) => {
+  let bookmarksArray;
   switch (action.type) {
     case types_enum.GET_ALL_BOOKMARKS:
       // logic to get all bookmarks for the current user
+      console.log('AHHHHHHHHHAAHAHAAHAHAHAH action.payload', action.payload);
 
       // mockup db data here
-      const mockDb = {
-        title: 'Fake Title',
-        url: 'fake URL',
-        thumbnail: 'Fake Thumbnail',
-      };
+      // const mockDb = {
+      //   title: 'Fake Title',
+      //   url: 'fake URL',
+      //   thumbnail: 'Fake Thumbnail',
+      // };
+      bookmarksArray = action.payload;
 
       return {
         ...state,
-        bookmarks: [mockDb],
+        bookmarks: bookmarksArray,
       };
 
     case types_enum.UPDATE_BOOKMARKS_BY_CATEGORY:

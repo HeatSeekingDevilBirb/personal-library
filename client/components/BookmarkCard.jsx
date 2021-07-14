@@ -25,9 +25,9 @@ export default function BookmarkCard(props) {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-
+console.log('props', props)
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} >
             <CardHeader
                 title={props.title}
                 subheader={props.caption}
@@ -42,7 +42,7 @@ export default function BookmarkCard(props) {
                     {props.description}
                 </Typography>
             </CardContent>
-            <CardActions disableSpacing={false}>
+            <CardActions disableSpacing={false} >
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
                 <Button variant="outlined">no props button</Button>
             </CardActions>

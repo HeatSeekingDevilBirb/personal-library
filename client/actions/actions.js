@@ -65,7 +65,9 @@ export const switchCategory_ActionCreator = (nextCategory) => ({
 // BOOKMARKS action creators
 // ---------------------------------- //
 export const getAllBookmarks_ActionCreator = () => (dispatch) => {
-  fetch('http://localhost:3000/api/allcategories') // request
+  console.log('getAllBookmarks');
+
+  fetch('api/bookmarks/1/1') // request
     .then((response) => response.json())
     .then((response) => {
       console.log('get all categries api call', response);

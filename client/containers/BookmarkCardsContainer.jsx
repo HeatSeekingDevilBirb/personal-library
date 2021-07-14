@@ -26,6 +26,10 @@ const DEBUG = true;
  * @param {object} state current application state served by Redux store
  * @returns {object} 
  */
+const mapStateToProps = state => ({
+  
+})
+
 // const mapStateToProps = state => {
     
 //   const { test } = state;
@@ -54,6 +58,10 @@ const mapDispatchToProps = (dispatch) => {
       if (DEBUG) console.log(`TestContainer: mapDispatchToProps: updateTestString: ${event.target.value}`);
       dispatch(actions.updateTestString_ActionCreator(event.target.value));
     },
+    getAllBookMarks: () => {
+      console.log("BookmarkCardsContainer : mapdispatchtoprops: getallbookmarks")
+      dispatch(actions.getAllBookmarks_ActionCreator());
+    }
   }
 };
 
@@ -79,7 +87,9 @@ class BookmarkCardsContainer extends Component {
           thumbnail={`https://picsum.photos/200/30${i}`} 
           description={`Description ${i+1}`}
           key={`card${i}`} 
+          getAllBookMarks={this.props.getAllBookMarks}
         />
+        
       );
     }
 
@@ -87,6 +97,7 @@ class BookmarkCardsContainer extends Component {
     return(
       <div className="bookmardCardsContainer">
         {bookmarkCardsCollection}
+        <button onClick={this.props.getAllBookMarks}>getAllBookMarks</button>
       </div>
     );
   }
