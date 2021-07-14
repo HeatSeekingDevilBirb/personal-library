@@ -32,7 +32,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllBookmarks : () => dispatch(actions.getAllBookmarks_ActionCreator())
+  getAllBookmarks : (e) => dispatch(actions.getAllBookmarks_ActionCreator(e)),
 })
 
 /**
@@ -60,6 +60,10 @@ class BookmarkCardsContainer extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.getAllBookmarks();
+  }
+
   render() {
     const bookmarkList = this.props.bookmarkList;
 
@@ -70,16 +74,19 @@ class BookmarkCardsContainer extends Component {
     //map over bookmarkList and pass in props
     <button onClick={this.props.addBookmark}>Button to get all</button>
     const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-      <BookmarkCard title={bookmarkList.title} getAllBookmarks={props.getAllBookmarks} />;
+      <BookmarkCard title={bookmarkList.title}  />;
     });
 
     // return elements to be added to the DOM
     return <div className="bookmardCardsContainer">
       {bookmarkCardsCollection}
-      <button onClick={this.props.addBookmark}>Button to get all</button>
+      
       </div>;
   }
 }
+
+
+
 
 /**
  * export template:
