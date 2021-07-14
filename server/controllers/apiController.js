@@ -83,7 +83,7 @@ apiController.getBookmarks = (req, res, next) => {
 
 apiController.addBookmark = (req, res, next) => {
   const { title, url, thumbnail, caption, category_id, user_id } = req.body;
-
+  console.log(req.body);
   const sqlQuery = {
     text: `INSERT INTO bookmarks (title, url, thumbnail, caption, category_id, user_id)
               VALUES ($1, $2, $3, $4, $5, $6)`,
@@ -94,6 +94,7 @@ apiController.addBookmark = (req, res, next) => {
 
   db.query(sqlQuery)
     .then((data) => {
+      res.locals = data;
       return next();
     })
     .catch((err) => {
@@ -102,11 +103,11 @@ apiController.addBookmark = (req, res, next) => {
 };
 
 apiController.removeBookmark = (req, res, next) => {
-  const bookmarkId = req.body.bookmark_id;
+  const { bookmark_id } = req.body; //.bookmark_id;
   const sqlQuery = {
     text: `DELETE FROM bookmarks 
             WHERE bookmarks.id = $1`,
-    values: [bookmarkId],
+    values: [bookmark_id],
   };
 
   console.log(sqlQuery);
@@ -116,6 +117,7 @@ apiController.removeBookmark = (req, res, next) => {
       return next();
     })
     .catch((err) => {
+      console.log(err);
       return next(err);
     });
 };
