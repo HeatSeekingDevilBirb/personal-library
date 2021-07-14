@@ -32,9 +32,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllBookmarks : () => dispatch(actions.getAllBookmarks_ActionCreator()),
-  
-})
+  getAllBookmarks: () => dispatch(actions.getAllBookmarks_ActionCreator()),
+});
 
 /**
  * map action dispatch to local properties as callback functions
@@ -61,28 +60,44 @@ class BookmarkCardsContainer extends Component {
     super(props);
   }
 
+  //componentWilLMount has been deprecated - need to change
   componentWillMount() {
     this.props.getAllBookmarks();
   }
 
   render() {
     const bookmarkList = this.props.bookmarkList;
+    const getAllBookmarks = this.props.getAllBookmarks;
 
 
+    if (!bookmarkList.length)
+      return (
+        <div>
+          <h1>Loading data, please wait...</h1>
+        </div>
+      );
     // This is where we would populate meta data queried from the database
     // into the cards for the currenly displayed category.
-
     //map over bookmarkList and pass in props
-    <button onClick={this.props.addBookmark}>Button to get all</button>
-    const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-      <BookmarkCard title={bookmarkList.title}  />;
-    });
+    else {
+      const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
+        return <BookmarkCard title={bookmark.title} />;
+      });
 
-    // return elements to be added to the DOM
-    return <div className="bookmardCardsContainer">
-      {bookmarkCardsCollection}
+      // return elements to be added to the DOM
+      <div></div>
+    
+      <button onClick={this.props.addBookmark}>Button to get all</button>
+      const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
+        <BookmarkCard title={bookmarkList.title} />;
+      });
+
+      // return elements to be added to the DOM
+      return <div className="bookmardCardsContainer">
+        {bookmarkCardsCollection}
       
       </div>;
+    }
   }
 }
 
