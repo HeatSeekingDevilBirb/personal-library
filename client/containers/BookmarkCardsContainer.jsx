@@ -31,6 +31,11 @@ const mapStateToProps = (state) => ({
   bookmarkList: state.bookmarks.bookmarks,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  getAllBookmarks : () => dispatch(actions.getAllBookmarks_ActionCreator()),
+  
+})
+
 /**
  * map action dispatch to local properties as callback functions
  * REM to add mapDispatchToProps to export at bottom of page!!
@@ -56,22 +61,33 @@ class BookmarkCardsContainer extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.getAllBookmarks();
+  }
+
   render() {
-    const bookmarkList = props.bookmarkList;
+    const bookmarkList = this.props.bookmarkList;
+
 
     // This is where we would populate meta data queried from the database
     // into the cards for the currenly displayed category.
 
     //map over bookmarkList and pass in props
-
+    <button onClick={this.props.addBookmark}>Button to get all</button>
     const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-      <BookmarkCard title={bookmarkList.title} />;
+      <BookmarkCard title={bookmarkList.title}  />;
     });
 
     // return elements to be added to the DOM
-    return <div className="bookmardCardsContainer">{bookmarkCardsCollection}</div>;
+    return <div className="bookmardCardsContainer">
+      {bookmarkCardsCollection}
+      
+      </div>;
   }
 }
+
+
+
 
 /**
  * export template:
@@ -80,4 +96,4 @@ class BookmarkCardsContainer extends Component {
  *
  * NOTE: replace mapping functions with null if you don't want to utilize them
  */
-export default connect(mapStateToProps, null)(BookmarkCardsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(BookmarkCardsContainer);
