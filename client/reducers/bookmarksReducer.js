@@ -58,3 +58,5 @@ const bookmarksReducer = (state = initialState, action) => {
  * within combinedReducers.js
  */
 export default bookmarksReducer;
+
+//[id, title, url, thumbnail, caption, category_id, user_id]

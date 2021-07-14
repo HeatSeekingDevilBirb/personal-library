@@ -15,13 +15,12 @@ import usersReducer from './usersReducer';
 import bookmarksReducer from './bookmarksReducer';
 import categoriesReducer from './categoriesReducer';
 
-
 /**
  * Gather properties from each reducer and
  * add them to state --
  * creating one bucket (property) in state
  * for each reducer.
- * 
+ *
  * Resulting structure:
  * state.bucketName.propertiesAddedByReducer
  */

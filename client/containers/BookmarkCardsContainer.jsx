@@ -69,6 +69,7 @@ class BookmarkCardsContainer extends Component {
     const bookmarkList = this.props.bookmarkList;
     const getAllBookmarks = this.props.getAllBookmarks;
 
+
     if (!bookmarkList.length)
       return (
         <div>
@@ -84,15 +85,24 @@ class BookmarkCardsContainer extends Component {
       });
 
       // return elements to be added to the DOM
-      return (
-        <div className="bookmarkCardsContainer">
-          <button onClick={getAllBookmarks}>Load All Bookmarks</button>
-          {bookmarkCardsCollection}
-        </div>
-      );
+      <div></div>
+    
+      <button onClick={this.props.addBookmark}>Button to get all</button>
+      const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
+        <BookmarkCard title={bookmarkList.title} />;
+      });
+
+      // return elements to be added to the DOM
+      return <div className="bookmardCardsContainer">
+        {bookmarkCardsCollection}
+      
+      </div>;
     }
   }
 }
+
+
+
 
 /**
  * export template:
