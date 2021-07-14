@@ -9,43 +9,42 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 345,
-    },
-    thumbnail: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
+  root: {
+    maxWidth: 345,
+  },
+  thumbnail: {
+    height: 0,
+    paddingTop: '56.25%', // 16:9
+  },
 }));
 
 export default function BookmarkCard(props) {
-    const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-console.log('props', props)
-    return (
-        <Card className={classes.root} >
-            <CardHeader
-                title={props.title}
-                subheader={props.caption}
-            />
-            <CardMedia
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  const { title, url, thumbnail, caption } = props;
+
+  return (
+    <Card className={classes.root}>
+      <CardHeader title={title} subheader={caption} />
+      {/* <CardMedia
                 className={classes.thumbnail}
                 image={props.thumbnail}
                 title={props.thumbnailTitle}
-            />
-            <CardContent>
+            /> */}
+      {/* <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {props.description}
+                    {url}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing={false} >
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
-                <Button variant="outlined">no props button</Button>
-            </CardActions>
-        </Card>
-    );
+      <Button variant="outlined">What Should I Do?</Button>
+      {/* </CardActions> */}
+    </Card>
+  );
 }

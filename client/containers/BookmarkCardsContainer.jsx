@@ -31,6 +31,10 @@ const mapStateToProps = (state) => ({
   bookmarkList: state.bookmarks.bookmarks,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  getAllBookmarks: () => dispatch(actions.getAllBookmarks_ActionCreator()),
+});
+
 /**
  * map action dispatch to local properties as callback functions
  * REM to add mapDispatchToProps to export at bottom of page!!
@@ -56,20 +60,37 @@ class BookmarkCardsContainer extends Component {
     super(props);
   }
 
-  render() {
-    const bookmarkList = props.bookmarkList;
+  //componentWilLMount has been deprecated - need to change
+  componentWillMount() {
+    this.props.getAllBookmarks();
+  }
 
+  render() {
+    const bookmarkList = this.props.bookmarkList;
+    const getAllBookmarks = this.props.getAllBookmarks;
+
+    if (!bookmarkList.length)
+      return (
+        <div>
+          <h1>Loading data, please wait...</h1>
+        </div>
+      );
     // This is where we would populate meta data queried from the database
     // into the cards for the currenly displayed category.
-
     //map over bookmarkList and pass in props
+    else {
+      const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
+        return <BookmarkCard title={bookmark.title} />;
+      });
 
-    const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-      <BookmarkCard title={bookmarkList.title} />;
-    });
-
-    // return elements to be added to the DOM
-    return <div className="bookmardCardsContainer">{bookmarkCardsCollection}</div>;
+      // return elements to be added to the DOM
+      return (
+        <div className="bookmarkCardsContainer">
+          <button onClick={getAllBookmarks}>Load All Bookmarks</button>
+          {bookmarkCardsCollection}
+        </div>
+      );
+    }
   }
 }
 
@@ -80,4 +101,4 @@ class BookmarkCardsContainer extends Component {
  *
  * NOTE: replace mapping functions with null if you don't want to utilize them
  */
-export default connect(mapStateToProps, null)(BookmarkCardsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(BookmarkCardsContainer);
