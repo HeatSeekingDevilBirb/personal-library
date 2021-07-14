@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 // serve static bundle files
-app.use('/dist', express.static(path.resolve(__dirname, '../dist/')));
+app.use('/', express.static(path.resolve(__dirname, '../dist/')));
 
 // HIGHLEVEL ROUTING
 app.get('/', (req, res) => {

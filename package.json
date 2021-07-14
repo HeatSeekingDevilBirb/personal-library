@@ -4,13 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/server.js",
-    "build": "NODE_ENV=production webpack",
-    "two": "NODE_ENV=development nodemon server/server.js",
-    "one": "NODE_ENV=development webpack serve --hot",
-    "dev": "concurrently \"npm run one\" \"npm run two\"",
-    "prod": "npm run build && NODE_ENV=production webpack serve",
-    
+    "start": "nodemon server/server.js",
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development concurrently \"webpack serve --open\" \"nodemon server/server.js\"",
+    "prod": "cross-env NODE_ENV=production webpack serve --open",
     "test": "jest --verbose --detectOpenHandles"
   },
   "jest": {
@@ -46,6 +43,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.2.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "enzyme": "^3.11.0",
     "eslint": "^7.30.0",

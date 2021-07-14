@@ -17,16 +17,11 @@ module.exports = {
   devtool: 'eval-source-map',
 
   devServer: {
+    host: 'localhost',
     port: 8080,
+    contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
-    // publicPath: path.resolve(__dirname, '/dist'),
-
-    // proxy: {
-    //     '/api/**': {
-    //       target: 'http://localhost:3000/',
-    //       secure: true,
-    //     },
-    // },
+    publicPath: '/',
     proxy: {
       '/api': 'http://localhost:3000',
     },
