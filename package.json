@@ -10,7 +10,7 @@
     "one": "NODE_ENV=development webpack serve --hot",
     "dev": "concurrently \"npm run one\" \"npm run two\"",
     "prod": "npm run build && NODE_ENV=production webpack serve",
-    "both": "NODE_ENV=development webpack serve --hot & nodemon ./server/server.js",
+    
     "test": "jest --verbose --detectOpenHandles"
   },
   "jest": {
