@@ -24,7 +24,7 @@ router.delete('/bookmarks', apiController.removeBookmark, (req, res) =>
   res.status(200).json({ msg: 'hey hey you just deleted a bookmark' })
 );
 
-router.put('/bookmarks', apiController.editBookmark, (req, res) =>
+router.patch('/bookmarks', apiController.editBookmark, (req, res) =>
   res.status(200).json({ msg: 'edited the data' })
 );
 
