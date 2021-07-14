@@ -127,4 +127,27 @@ apiController.removeBookmark = (req, res, next) => {
     });
 };
 
+apiController.editBookmark = (req, res, next) => {
+  const { title, url, thumbnail, caption, category_id, user_id, bookmark_id } = req.body;
+  console.log(req.body);
+  const sqlQuery = {
+    text: `UPDATE 
+      bookmarks
+    SET
+     title = $1,url = $2, thumbnail = $3, caption = $4, category_id = $5, user_id = $6
+       WHERE id=$7`,
+    values: [title, url, thumbnail, caption, category_id, user_id, bookmark_id],
+  };
+  console.log(sqlQuery);
+
+  db.query(sqlQuery)
+    .then((data) => {
+      res.locals.edit = data;
+      return next();
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(err);
+    });
+};
 module.exports = apiController;

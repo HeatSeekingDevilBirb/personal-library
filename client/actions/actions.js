@@ -76,6 +76,51 @@ export const getAllBookmarks_ActionCreator = () => (dispatch) => {
     .catch(console.error);
 };
 
+export const addBookmark = (formData) => {
+  let feedBack;
+  console.log('formData from addBookmark', formData); //form data
+  //formdata = { title, url, thumbnail, caption, category_id, user_id}
+  return (dispatch) => {
+    return fetch('api/bookmarks', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        feedBack = response;
+        console.log('feedBack', feedBack);
+        console.log('response', response);
+      })
+      .then(() => getAllBookmarks_ActionCreator())
+      .catch((err) => console.log('error from addBookmark', err));
+  };
+};
+
+export const deleteBookmark = (formData) => {
+  let deletedBookmark;
+  console.log('formData from delete bookmark', formData);
+  //  formData = {bookmark_id}
+
+  return (dispatch) => {
+    return fetch('api/bookmarks', {
+      method: 'DELETE',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        deletedBookmark = response;
+        console.log('deletedBookmark', deletedBookmark);
+      })
+      .then(() => getAllBookmarks_ActionCreator())
+      .catch((err) => console.log('error from deleteBookmark', err));
+  };
+};
+
+export const editBookmark = (formData) => {
+  console.log('formData from edit Bookmark', formData); //form data
+  // //formdata = { title, url, thumbnail, caption, category_id, user_id, bookmark_id}
+};
+
 export const updateBookmarksByCategory_ActionCreator = (bookmarkList) => ({
   type: types_enum.UPDATE_BOOKMARKS_BY_CATEGORY,
   payload: bookmarkList,
