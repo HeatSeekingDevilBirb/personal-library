@@ -17,10 +17,8 @@ const initialState = {
 
 // declare the reducer
 const usersReducer = (state = initialState, action) => {
-    
   switch (action.type) {
     case types_enum.GET_CURRENT_USER:
-    
       // logic to find current user here
       const currentUser = 1;
 
@@ -30,10 +28,9 @@ const usersReducer = (state = initialState, action) => {
       };
 
     case types_enum.SWITCH_USER:
-  
       // get User info from database
-      const newUserId = action.payload
-      const newUserName = `User ${newUserId}`
+      const newUserId = action.payload;
+      const newUserName = `User ${newUserId}`;
 
       return {
         ...state,
@@ -49,7 +46,7 @@ const usersReducer = (state = initialState, action) => {
 
 /**
  * export this reducer to be combined with
- * other reducer state properties 
+ * other reducer state properties
  * within combinedReducers.js
  */
 export default usersReducer;

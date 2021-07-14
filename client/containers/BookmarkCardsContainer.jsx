@@ -57,7 +57,6 @@ class BookmarkCardsContainer extends Component {
   }
 
   render() {
-
     const bookmarkList = props.bookmarkList;
 
     // This is where we would populate meta data queried from the database
@@ -66,10 +65,8 @@ class BookmarkCardsContainer extends Component {
     //map over bookmarkList and pass in props
 
     const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-      <BookmarkCard
-        title={bookmarkList.title}
-      />
-    })
+      <BookmarkCard title={bookmarkList.title} />;
+    });
 
     // return elements to be added to the DOM
     return <div className="bookmardCardsContainer">{bookmarkCardsCollection}</div>;

@@ -17,7 +17,7 @@ const apiController = {};
 apiController.getCategories = (req, res, next) => {
   const userId = req.body.user_id;
 
-  console.log('Req result:', req.body);
+  //console.log('Req result:', req.body);
 
   const sqlQuery = {
     text: `SELECT DISTINCT categories.id, categories.name
@@ -30,7 +30,7 @@ apiController.getCategories = (req, res, next) => {
   //console.log("SQL QUERY ", sqlQuery);
   db.query(sqlQuery)
     .then((data) => {
-      console.log('SQL DATA ', data);
+      //console.log('SQL DATA ', data);
       res.locals.categories = data.rows;
       return next();
     })
@@ -47,7 +47,7 @@ apiController.getAllCategories = (req, res, next) => {
   //console.log("SQL QUERY ", sqlQuery);
   db.query(sqlQuery)
     .then((data) => {
-      console.log('SQL DATA ', data);
+      // console.log('SQL DATA ', data);
       res.locals.categories = data.rows;
       return next();
     })
@@ -57,9 +57,14 @@ apiController.getAllCategories = (req, res, next) => {
 };
 
 apiController.getBookmarks = (req, res, next) => {
+  // api/bookmarks/:userId/:categoryId
+  //this will be syntax api/bookmarks/1/1
+  //for userId = 1, categoryId = 1
+
   const userId = req.params.userId;
   const catId = req.params.categoryId; // <<< COMING FROM REACT (TASH)
   // console.log('RESULT', catId)
+  console.log('req.params', req.params);
 
   const sqlQuery = {
     text: `SELECT *
@@ -72,7 +77,7 @@ apiController.getBookmarks = (req, res, next) => {
   //console.log("SQL QUERY ", sqlQuery);
   db.query(sqlQuery)
     .then((data) => {
-      console.log('SQL DATA ', data);
+      // console.log('SQL DATA ', data);
       res.locals.bookmarks = data.rows;
       return next();
     })
@@ -83,7 +88,7 @@ apiController.getBookmarks = (req, res, next) => {
 
 apiController.addBookmark = (req, res, next) => {
   const { title, url, thumbnail, caption, category_id, user_id } = req.body;
-  console.log(req.body);
+  //console.log(req.body);
   const sqlQuery = {
     text: `INSERT INTO bookmarks (title, url, thumbnail, caption, category_id, user_id)
               VALUES ($1, $2, $3, $4, $5, $6)`,
@@ -110,7 +115,7 @@ apiController.removeBookmark = (req, res, next) => {
     values: [bookmark_id],
   };
 
-  console.log(sqlQuery);
+  //console.log(sqlQuery);
 
   db.query(sqlQuery)
     .then((data) => {

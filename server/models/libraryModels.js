@@ -15,6 +15,9 @@ module.exports = uri;
 https://www.elephantsql.com/docs/index.html
 */
 
+//Note***
+//test suite may not working using this import of uri and for testing put uri in manually into this file
+
 // create a new pool here using the connection string above
 const pool = new Pool({
   connectionString: PG_URI,

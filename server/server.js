@@ -72,6 +72,10 @@ app.use((err, req, res, next) => {
 // color is set by ANSI color code
 // https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
 // reset color: \u001b[0m
-module.exports = app.listen(PORT, () => {
+// module.exports = app.listen(PORT, () => {
+//   console.log(`\u001b[38;5;39mListening at \u001b[38;5;51mhttp://localhost:${PORT}\u001b[0m`);
+// });
+
+app.listen(PORT, () => {
   console.log(`\u001b[38;5;39mListening at \u001b[38;5;51mhttp://localhost:${PORT}\u001b[0m`);
 });
