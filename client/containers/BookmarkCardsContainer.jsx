@@ -32,7 +32,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllBookmarks : (e) => dispatch(actions.getAllBookmarks_ActionCreator(e)),
+  getAllBookmarks : () => dispatch(actions.getAllBookmarks_ActionCreator()),
+  
 })
 
 /**
