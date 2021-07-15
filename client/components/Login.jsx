@@ -38,10 +38,10 @@ const Login = ({handleChange}) => {
                     Sign In
                 </Button>
                 <Typography>
-                    <Link href='#'>Forgot password ?</Link>
+                    <Link to='/signinup'>Forgot password ?</Link>
                 </Typography>
                 <Typography> Do you have an account ?
-                    <Link href='#' onClick={()=>handleChange('event', 1)}>Sign In</Link>
+                    <Link to='/signinup' onClick={()=>handleChange("event", 1)}>Sign In</Link>
                 </Typography>
                 
 
