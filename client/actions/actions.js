@@ -19,6 +19,7 @@
 // import actionType constants
 
 import * as types_enum from '../constants/actionTypes';
+import store from '../store';
 
 // ================================== //
 // TEST action creators
@@ -67,8 +68,10 @@ export const switchCategory_ActionCreator = (nextCategory) => ({
 // ---------------------------------- //
 export const getAllBookmarks_ActionCreator = () => (dispatch) => {
   // console.log('getAllBookmarks');
-
-  fetch('api/bookmarks/1/1') // request
+  let currentStore = store.getState();
+  let loggedInUser = currentStore.bookmarks.loggedInUser;
+  console.log('LoggedInUser', loggedInUser);
+  fetch(`api/bookmarks/${loggedInUser}/1`) // request
     .then((response) => response.json())
     .then((response) => {
       // console.log('get all categries api call', response);

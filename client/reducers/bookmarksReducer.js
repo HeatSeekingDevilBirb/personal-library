@@ -13,7 +13,7 @@ import * as types_enum from '../constants/actionTypes.js';
 const initialState = {
   bookmarks: [],
   bookmarksByCategory: [],
-  loggedInUser: 0,
+  loggedInUser: 1,
 };
 
 // declare the reducer

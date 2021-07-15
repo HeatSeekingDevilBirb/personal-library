@@ -128,7 +128,7 @@ apiController.removeBookmark = (req, res, next) => {
 };
 
 apiController.editBookmark = (req, res, next) => {
-  console.log('Reached the Backend apiController on Edit')
+  console.log('Reached the Backend apiController on Edit');
   const { title, url, thumbnail, caption, category_id, user_id, bookmark_id } = req.body;
   console.log(req.body);
   const sqlQuery = {
