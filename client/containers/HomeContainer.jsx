@@ -6,15 +6,16 @@
  * 
 \********************************************/
 import React, { Component } from 'react';
-import { connect } from 'react-redux';          // required for mapStateToProps / mapDispatchToProps
-import * as actions from '../actions/actions';  // import actions from action creators file
+import { connect } from 'react-redux'; // required for mapStateToProps / mapDispatchToProps
+import * as actions from '../actions/actions'; // import actions from action creators file
 /**
  * import child react components/containers here
  * template:
  * import <ComponentName> from '<relative path>';
  */
-import Button from '@material-ui/core/Button';  // required for access to material-ui components
+import Button from '@material-ui/core/Button'; // required for access to material-ui components
 import BookmarkCardsContainer from './BookmarkCardsContainer';
+import CreateBookmarkModal from '../components/CreateBookmarkModal';
 
 // flag to toggle debug logs
 const DEBUG = true;
@@ -23,10 +24,9 @@ const DEBUG = true;
  * map application state values to local component properties.
  * REM to add mapStateToProps to export at bottom of page!!
  * @param {object} state current application state served by Redux store
- * @returns {object} 
+ * @returns {object}
  */
-const mapStateToProps = state => {
-    
+const mapStateToProps = (state) => {
   const { user } = state;
 
   // if (DEBUG) console.log('TestContainer: mapStateToProps: testBool: ', test.testPropBool);
@@ -55,62 +55,63 @@ const mapDispatchToProps = (dispatch) => {
     },
     updateAllCategories: (categoriesList) => {
       if (DEBUG) console.log(`HomeContainer: mapDispatchToProps: updateAllCategories:`);
-      if (DEBUG) console.log(categoriesList)
+      if (DEBUG) console.log(categoriesList);
 
       dispatch(actions.updateAllCategories_ActionCreator(categoriesList));
     },
     updateBookmarksByCategory: (categoriesList) => {
       if (DEBUG) console.log(`HomeContainer: mapDispatchToProps: updateBookmarksByCategory:`);
-      if (DEBUG) console.log(bookmarksList)
+      if (DEBUG) console.log(bookmarksList);
 
       dispatch(actions.updateBookmarksByCategory_ActionCreator(bookmarksList));
     },
-  }
+  };
 };
 
 class HomeContainer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
+    this.state = {
+      setExpanded: false,
+    };
+
+    this.HandleExpandClick = this.HandleExpandClick.bind(this);
   }
 
-  componentDidMount(){
+  HandleExpandClick() {
+    this.setState({ setExpanded: !this.state.setExpanded });
+  }
 
+  componentDidMount() {
     // prove that we can switch users in state
     // this.props.switchUser(2);
 
-
     fetch('/api/allcategories/')
-      .then(response => response.json())
-      .then(data => {
-
+      .then((response) => response.json())
+      .then((data) => {
         // console.log(`HomeContainer: componentDidMount: fetch('/api/allcategories/') data:`)
         // console.log(data)
 
         this.props.updateAllCategories(data);
-      
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.log);
       });
 
-      console.log(`HomeContainer: componentDidMount: this.props.userId: ${this.props.userId}`)
+    console.log(`HomeContainer: componentDidMount: this.props.userId: ${this.props.userId}`);
 
-      fetch(`/api/bookmarks/${this.props.userId}/1`)
-        .then(response => response.json())
-        .then(data => {
-
+    fetch(`/api/bookmarks/${this.props.userId}/1`)
+      .then((response) => response.json())
+      .then((data) => {
         // console.log(`HomeContainer: componentDidMount: fetch('/api/allcategories/') data:`)
         // console.log(data)
 
         this.props.updateBookmarksByCategory(data);
-      
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error.log);
       });
-
-
 
     // const myHeaders = new Headers();
     // myHeaders.append("Access-Control-Allow-Origin", true);
@@ -130,15 +131,24 @@ class HomeContainer extends Component {
     //   .then(response => response.text())
     //   .then(result => console.log(result))
     //   .catch(error => console.log('error', error));
-        
   }
 
-  render(){
-
+  render() {
     // return elements to be added to the DOM
-    return(
+    return (
       <div className="homeContainer">
-        {/* <h1>Home Container</h1> */}
+        <h1>Home Container</h1>
+        <button
+          className="buttonAddBookmark"
+          type="button"
+          onClick={() => this.HandleExpandClick()}
+        >
+          Add Bookmark
+        </button>
+        <CreateBookmarkModal
+          show={this.state.setExpanded}
+          onClose={() => this.HandleExpandClick()}
+        />
         <BookmarkCardsContainer />
       </div>
     );
@@ -147,9 +157,9 @@ class HomeContainer extends Component {
 
 /**
  * export template:
- * 
+ *
  * export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);
- * 
+ *
  * NOTE: replace mapping functions with null if you don't want to utilize them
  */
 export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);

@@ -58,6 +58,8 @@ const mapDispatchToProps = (dispatch) => ({
 class BookmarkCardsContainer extends Component {
   constructor(props) {
     super(props);
+
+    
   }
 
   //componentWilLMount has been deprecated - need to change
@@ -80,7 +82,7 @@ class BookmarkCardsContainer extends Component {
     //map over bookmarkList and pass in props
     else {
       const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-        return <BookmarkCard title={bookmark.title} />;
+        return <BookmarkCard title={bookmark.title}/>;
       });
 
       // return elements to be added to the DOM
