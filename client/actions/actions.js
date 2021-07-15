@@ -119,7 +119,7 @@ export const deleteBookmark = (formData) => {
 export const editBookmark = (formData) => {
   let editedbookmark;
   console.log('formData from edit Bookmark', formData); //form data
-  // //formdata = { title, url, thumbnail, caption, category_id, user_id, bookmark_id}
+  //formData = { title, url, thumbnail, caption, category_id, user_id, bookmark_id};
   return fetch('api/bookmarks', {
     method: 'PATCH',
     body: formData,

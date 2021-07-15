@@ -26,7 +26,8 @@ export default function BookmarkCard(props) {
     setExpanded(!expanded);
   };
 
-  const { title, url, thumbnail, caption } = props;
+  const { title, url, thumbnail, caption, category_id, user_id } =
+    props.bookMark;
 
   return (
     <Card className={classes.root}>
@@ -43,8 +44,16 @@ export default function BookmarkCard(props) {
             </CardContent>
             <CardActions disableSpacing={false} >
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
-      <Button variant="outlined">What Should I Do?</Button>
+      <Button variant='outlined'>What Should I Do?</Button>
       {/* </CardActions> */}
+      <button
+        className='btn btn-close'
+        type='button'
+        onClick={() => setExpanded(true)}
+        bookMark={props.bookMark}
+      >
+        Edit
+      </button>
     </Card>
   );
 }
