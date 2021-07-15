@@ -21,7 +21,7 @@ const bookmarksReducer = (state = initialState, action) => {
   switch (action.type) {
     case types_enum.GET_ALL_BOOKMARKS:
       // logic to get all bookmarks for the current user
-      console.log('AHHHHHHHHHAAHAHAAHAHAHAH action.payload', action.payload);
+      // console.log('AHHHHHHHHHAAHAHAAHAHAHAH action.payload', action.payload);
 
       // mockup db data here
       // const mockDb = {
@@ -38,13 +38,22 @@ const bookmarksReducer = (state = initialState, action) => {
 
     case types_enum.UPDATE_BOOKMARKS_BY_CATEGORY:
       // logic to get all bookmarks by category for the current user
-
+      
       // mockup db data here
 
       return {
         ...state,
         bookmarksByCategory: action.payload,
       };
+      
+      case types_enum.DELETE_BOOKMARK:
+        console.log('Action.payload', action.payload)
+        return {
+          ...state, 
+          bookmarks: state.bookmarks.filter(
+            (bookMarks) => bookMarks.id !== action.payload
+            )
+          };
 
     default: {
       return state;
