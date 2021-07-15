@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 
 // import any child components/containers here:
 import HomeContainer from '../containers/HomeContainer';
-
+import Navbar from './NavBar';
 class App extends Component {
     constructor(props) {
         super(props);
@@ -17,10 +17,17 @@ class App extends Component {
 
     render() {
         return (
+        <div>
+            <Navbar/>
             <div>
                 {/* <h1>Welcome to React!</h1> */}
+                
+                
+                
+                
                 <HomeContainer />
             </div>
+        </div>
         )
     }
 };
