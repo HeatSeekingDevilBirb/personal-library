@@ -19,11 +19,11 @@ const SignUp = () => {
          </Grid>
         
          <form>
-            <TextField fullWidth label="Name" />
+           
             <TextField fullWidth label="Email" />
             <TextField fullWidth label="Name" />
             <TextField fullWidth label="Password" />
-            <TextField fullWidth label="Confirm Password" />
+            {/* <TextField fullWidth label="Confirm Password" /> */}
             <Grid align="left">
             <FormControlLabel 
                 control={

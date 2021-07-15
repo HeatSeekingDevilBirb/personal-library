@@ -1,8 +1,17 @@
 const express = require('express');
 
 const apiController = require('../controllers/apiController');
+const userController = require('../controllers/userController');
 
 const router = express.Router();
+
+router.get('/login', userController.checkUser, (req, res) => {
+  res.status(200).json(res.locals.users);
+});
+
+router.post('/signup', userController.newUser, (req, res) => {
+  res.status(200).json(res.locals.userTable);
+});
 
 router.get('/categories', apiController.getCategories, (req, res) =>
   res.status(200).json(res.locals.categories)

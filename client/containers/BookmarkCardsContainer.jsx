@@ -100,6 +100,7 @@ class BookmarkCardsContainer extends Component {
         <div className="bookmarkCardsContainer">
           <Button onClick={getAllBookmarks}>Load All Bookmarks</Button>
           {bookmarkCardsCollection}
+          
         </div>
       );
     }

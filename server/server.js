@@ -50,10 +50,10 @@ app.get('/', (req, res) => {
 app.use('/api', apiRouter);
 
 // 404 routing
-app.use((req, res) => {
-  //res.status(404).sendFile(path.resolve(__dirname, '../client/static/status404.html'));
-  res.status(404).send('404: We regret to inform you that the desired page was not found.');
-});
+// app.use((req, res) => {
+//   //res.status(404).sendFile(path.resolve(__dirname, '../client/static/status404.html'));
+//   res.status(404).send('404: We regret to inform you that the desired page was not found.');
+// });
 
 // Global error handler
 app.use((err, req, res, next) => {
