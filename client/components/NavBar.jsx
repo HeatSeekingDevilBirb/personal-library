@@ -35,19 +35,19 @@ const Navbar = () => {
        <Toolbar>
     <MenuButton/>
     <Typography variant="h6" className={classes.title}>
-      <Link to='/home' className={classes.title}>
+      <Link to='/' className={classes.title}>
         Title</Link></Typography>
     <Typography variant='h6' className={classes.title}>
-    <Link to='/home' className={classes.title}>Category 1</Link></Typography>
+    <Link to='/' className={classes.title}>Category 1</Link></Typography>
     <Typography variant='h6' className={classes.title}>Category 2</Typography>
     <Typography variant='h6' className={classes.title}>Category 3</Typography>
     <Typography variant='h6' className={classes.title}>Category 4</Typography>
     <Button color="inherit">
-      <Link className={classes.menuButton} to='/signUp'>
-      Signup</Link>
+      <Link className={classes.menuButton} to='/signup'>
+      Sign Up</Link>
       </Button>
       <Button color='inherit'>
-      <Link className={classes.menuButton} to='/signIn'>
+      <Link className={classes.menuButton} to='/login'>
       SignIn
       </Link>
       </Button>
