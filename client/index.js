@@ -23,8 +23,8 @@ import App from './components/App';
 
 
 // A few random logs to confirm that this file is being served.
-console.log('====================');
-console.log('Hello from index.js!');
+// console.log('====================');
+// console.log('Hello from index.js!');
 
 ReactDOM.render(
   // wrap the App in the Redux 'Provider' component and

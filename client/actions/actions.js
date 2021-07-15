@@ -65,12 +65,12 @@ export const switchCategory_ActionCreator = (nextCategory) => ({
 // BOOKMARKS action creators
 // ---------------------------------- //
 export const getAllBookmarks_ActionCreator = () => (dispatch) => {
-  console.log('getAllBookmarks');
+  // console.log('getAllBookmarks');
 
   fetch('api/bookmarks/1/1') // request
     .then((response) => response.json())
     .then((response) => {
-      console.log('get all categries api call', response);
+      // console.log('get all categries api call', response);
       dispatch({ type: types_enum.GET_ALL_BOOKMARKS, payload: response });
     })
     .catch(console.error);
@@ -78,7 +78,7 @@ export const getAllBookmarks_ActionCreator = () => (dispatch) => {
 
 export const addBookmark = (formData) => {
   let feedBack;
-  console.log('formData from addBookmark', formData); //form data
+  // console.log('formData from addBookmark', formData); //form data
   //formdata = { title, url, thumbnail, caption, category_id, user_id}
   return (dispatch) => {
     return fetch('api/bookmarks', {
@@ -88,32 +88,31 @@ export const addBookmark = (formData) => {
       .then((response) => response.json())
       .then((response) => {
         feedBack = response;
-        console.log('feedBack', feedBack);
-        console.log('response', response);
+        // console.log('feedBack', feedBack);
+        // console.log('response', response);
       })
       .then(() => getAllBookmarks_ActionCreator())
       .catch((err) => console.log('error from addBookmark', err));
   };
 };
 
-export const deleteBookmark = (formData) => {
-  let deletedBookmark;
-  console.log('formData from delete bookmark', formData);
-  //  formData = {bookmark_id}
-
-  return (dispatch) => {
-    return fetch('api/bookmarks', {
-      method: 'DELETE',
-      body: formData,
+export const deleteBookmark = (id) => (dispatch) => {
+  // console.log(id, 'ID TEST')
+  return fetch(`api/bookmarks`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({"id": id})
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      dispatch({type: types_enum.DELETE_BOOKMARK, payload: id})
     })
-      .then((response) => response.json())
-      .then((response) => {
-        deletedBookmark = response;
-        console.log('deletedBookmark', deletedBookmark);
-      })
-      .then(() => getAllBookmarks_ActionCreator())
-      .catch((err) => console.log('error from deleteBookmark', err));
-  };
+    .catch((err) => {
+      // dispatch errors here later...
+      console.log(err);
+    });
 };
 
 export const editBookmark = (formData) => {
