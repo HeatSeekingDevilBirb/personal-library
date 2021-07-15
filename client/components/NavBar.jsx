@@ -44,13 +44,9 @@ const Navbar = () => {
     <Typography variant='h6' className={classes.title}>Category 3</Typography>
     <Typography variant='h6' className={classes.title}>Category 4</Typography>
     <Button color="inherit">
-      <Link className={classes.menuButton} to='/signup'>
+      <Link className={classes.menuButton} to='/signinup'>
+      Sign In /
       Sign Up</Link>
-      </Button>
-      <Button color='inherit'>
-      <Link className={classes.menuButton} to='/login'>
-      SignIn
-      </Link>
       </Button>
   </Toolbar>
     </Appbar>

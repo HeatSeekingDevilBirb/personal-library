@@ -39,7 +39,7 @@ const paperStyle={width: 320, margin: "20px auto"}
 
 
     return (
-        <div>Container
+        <div>
             <Paper elevation={20} style={paperStyle}>
   <Tabs
     value={value}
