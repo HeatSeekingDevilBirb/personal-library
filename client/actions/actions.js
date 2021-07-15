@@ -76,24 +76,25 @@ export const getAllBookmarks_ActionCreator = () => (dispatch) => {
     .catch(console.error);
 };
 
-export const addBookmark = (formData) => {
+export const addBookmark = (formData) => (dispatch) => {
   let feedBack;
-  // console.log('formData from addBookmark', formData); //form data
-  //formdata = { title, url, thumbnail, caption, category_id, user_id}
-  return (dispatch) => {
-    return fetch('api/bookmarks', {
-      method: 'POST',
-      body: formData,
+  console.log('formData from addBookmark', formData); //form data
+  // formdata = { title, url, thumbnail, caption, category_id, user_id}
+  return fetch(`api/bookmarks`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'Application/JSON',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => response.json())
+    .then(() => {
+      dispatch({
+        type: types_enum.ADD_BOOKMARK,
+        payload: formData,
+      });
     })
-      .then((response) => response.json())
-      .then((response) => {
-        feedBack = response;
-        // console.log('feedBack', feedBack);
-        // console.log('response', response);
-      })
-      .then(() => getAllBookmarks_ActionCreator())
-      .catch((err) => console.log('error from addBookmark', err));
-  };
+    .catch((err) => console.log('error from addBookmark', err));
 };
 
 export const deleteBookmark = (id) => (dispatch) => {
@@ -103,11 +104,11 @@ export const deleteBookmark = (id) => (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({"id": id})
+    body: JSON.stringify({ id: id }),
   })
     .then((response) => response.json())
     .then((response) => {
-      dispatch({type: types_enum.DELETE_BOOKMARK, payload: id})
+      dispatch({ type: types_enum.DELETE_BOOKMARK, payload: id });
     })
     .catch((err) => {
       // dispatch errors here later...
@@ -124,7 +125,7 @@ export const editBookmark = (formData) => {
     body: formData,
   })
     .then((response) => response.json())
-    .then((response) => {
+    .then(() => {
       editedbookmark = response;
       console.log('editedbookmark', editedbookmark);
     })

@@ -33,8 +33,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllBookmarks: () => dispatch(actions.getAllBookmarks_ActionCreator()),
-  deleteBookmark: (e) => dispatch(actions.deleteBookmark(e)), 
-  editBookmark: (e) => dispatch(actions.editBookmark(e))
+  deleteBookmark: (e) => dispatch(actions.deleteBookmark(e)),
+  editBookmark: (e) => dispatch(actions.editBookmark(e)),
 });
 
 /**
@@ -84,9 +84,16 @@ class BookmarkCardsContainer extends Component {
     //map over bookmarkList and pass in props
     else {
       const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-        return <BookmarkCard title={bookmark.title} bookMark={bookmark} deleteBookmark= {this.props.deleteBookmark} editBookmark={this.props.editBookmark}/>;
+        return (
+          <BookmarkCard
+            title={bookmark.title}
+            bookMark={bookmark}
+            deleteBookmark={this.props.deleteBookmark}
+            editBookmark={this.props.editBookmark}
+          />
+        );
       });
-      console.log("bookmarkCardsCollection", bookmarkCardsCollection)
+      console.log('bookmarkCardsCollection', bookmarkCardsCollection);
 
       // return elements to be added to the DOM
       return (
