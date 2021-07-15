@@ -19,23 +19,23 @@ const initialState = {
 const testReducer = (state = initialState, action) => {
     
   switch (action.type) {
-    case types_enum.UPDATE_TEST_BOOL:
+  case types_enum.UPDATE_TEST_BOOL:
     
-      return {
-        ...state,
-        testPropBool: !state.testPropBool,
-      };
+    return {
+      ...state,
+      testPropBool: !state.testPropBool,
+    };
 
-    case types_enum.UPDATE_TEST_STRING:
+  case types_enum.UPDATE_TEST_STRING:
   
-      return {
-        ...state,
-        testPropString: action.payload,
-      };
+    return {
+      ...state,
+      testPropString: action.payload,
+    };
 
-    default: {
-      return state;
-    }
+  default: {
+    return state;
+  }
   }
 };
 

@@ -21,49 +21,57 @@ const bookmarksReducer = (state = initialState, action) => {
   let bookmark;
 
   switch (action.type) {
-    case types_enum.GET_ALL_BOOKMARKS:
-      // logic to get all bookmarks for the current user
+  case types_enum.GET_ALL_BOOKMARKS:
+    // logic to get all bookmarks for the current user
 
-      // mockup db data here
-      // const mockDb = {
-      //   title: 'Fake Title',
-      //   url: 'fake URL',
-      //   thumbnail: 'Fake Thumbnail',
-      // };
-      bookmarksArray = action.payload;
+    // mockup db data here
+    // const mockDb = {
+    //   title: 'Fake Title',
+    //   url: 'fake URL',
+    //   thumbnail: 'Fake Thumbnail',
+    // };
+    bookmarksArray = action.payload;
 
-      return {
-        ...state,
-        bookmarks: bookmarksArray,
-      };
+    return {
+      ...state,
+      bookmarks: bookmarksArray,
+    };
 
-    case types_enum.UPDATE_BOOKMARKS_BY_CATEGORY:
-      // logic to get all bookmarks by category for the current user
+  case types_enum.UPDATE_BOOKMARKS_BY_CATEGORY:
+    // logic to get all bookmarks by category for the current user
 
-      // mockup db data here
+    // mockup db data here
 
-      return {
-        ...state,
-        bookmarksByCategory: action.payload,
-      };
-    case types_enum.ADD_BOOKMARK:
-      bookmark = action.payload;
+    return {
+      ...state,
+      bookmarksByCategory: action.payload,
+    };
+  case types_enum.ADD_BOOKMARK:
+    bookmark = action.payload;
 
-      return {
-        ...state,
-        bookmarks: [...state.bookmarks, bookmark],
-      };
+    return {
+      ...state,
+      bookmarks: [...state.bookmarks, bookmark],
+    };
 
-    case types_enum.DELETE_BOOKMARK:
-      console.log('Action.payload', action.payload);
-      return {
-        ...state,
-        bookmarks: state.bookmarks.filter((bookMarks) => bookMarks.id !== action.payload),
-      };
+  case types_enum.DELETE_BOOKMARK:
+    console.log('Action.payload', action.payload);
+    return {
+      ...state,
+      bookmarks: state.bookmarks.filter((bookMarks) => bookMarks.id !== action.payload),
+    };
 
-    default: {
-      return state;
-    }
+  case types_enum.EDIT_BOOKMARK:
+    console.log('EDIT BOOKMARK PAYLOAD: ', action.payload);
+    bookmark = action.payload;
+    return {
+      ...state,
+      bookmarks: [...state.bookmarks],
+    };
+
+  default: {
+    return state;
+  }
   }
 };
 
