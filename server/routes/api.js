@@ -5,7 +5,7 @@ const userController = require('../controllers/userController');
 
 const router = express.Router();
 
-router.get('/login', userController.checkUser, (req, res) => {
+router.patch('/login', userController.checkUser, (req, res) => {
   res.status(200).json(res.locals.users);
 });
 

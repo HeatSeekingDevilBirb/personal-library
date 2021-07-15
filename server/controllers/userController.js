@@ -25,6 +25,7 @@ userController.newUser = (req, res, next) => {
 userController.checkUser = (req, res, next) => {
   const checkUserQuery = `SELECT * FROM users WHERE username = $1 AND password = $2`;
   const { username, password } = req.body;
+  console.log(req.body);
   const values = [username, password];
 
   db.query(checkUserQuery, values)

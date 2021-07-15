@@ -31,12 +31,12 @@ export default function BookmarkCard(props) {
   return (
     <Card className={classes.root}>
       <CardHeader title={title} subheader={caption} />
-      {/* <CardMedia
-                className={classes.thumbnail}
-                image={props.thumbnail}
-                title={props.thumbnailTitle}
-            /> */}
-      {/* <CardContent>
+      <CardMedia
+                // className={classes.thumbnail}
+                // image={props.thumbnail}
+                // title={props.thumbnailTitle}
+            />
+      <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {url}
                 </Typography>
@@ -45,7 +45,7 @@ export default function BookmarkCard(props) {
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
       <button onClick={() => props.deleteBookmark(id)}>Delete</button>
       <button onClick={() => props.editBookmark(id)}>Edit</button>
-      {/* </CardActions> */}
+      </CardActions>
     </Card>
   );
 }

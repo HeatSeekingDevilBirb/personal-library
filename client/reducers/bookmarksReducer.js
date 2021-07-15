@@ -13,6 +13,7 @@ import * as types_enum from '../constants/actionTypes.js';
 const initialState = {
   bookmarks: [],
   bookmarksByCategory: [],
+  loggedInUser: 0,
 };
 
 // declare the reducer
@@ -59,6 +60,13 @@ const bookmarksReducer = (state = initialState, action) => {
       return {
         ...state,
         bookmarks: state.bookmarks.filter((bookMarks) => bookMarks.id !== action.payload),
+      };
+
+    case types_enum.LOGIN:
+      console.log('Action.payload', action.payload);
+      return {
+        ...state,
+        loggedInUser: action.payload,
       };
 
     default: {

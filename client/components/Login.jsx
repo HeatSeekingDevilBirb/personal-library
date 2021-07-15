@@ -1,10 +1,19 @@
 import React, {useState} from 'react';
 import {Grid, Paper, Avatar, TextField, FormControlLabel, Checkbox, Button, Typography, Link} from "@material-ui/core";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions'
+import {useDispatch} from 'react-redux'
+import { useCallback } from 'react';
+import * as types_enum from '../constants/actionTypes'
 
 
 
 const Login = ({handleChange}) => {
+
+    const dispatch = useDispatch()
+    
+  
    
     
     const paperStyle={padding:20, width:280, height:'70vh', margin:'0'}
@@ -19,8 +28,29 @@ const Login = ({handleChange}) => {
     function handleSubmit(event) {
         event.preventDefault();
         console.log("username", username, 'password', password);
+        let loginId;
+    let formData = {username, password};
+    console.log('formData', formData);
+   fetch('api/login', {
+    method: 'PATCH',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({"username":username, 'password':password}),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      loginId = response[0].id
+      console.log('response', response[0].id);
+      dispatch({ type: types_enum.LOGIN, payload: loginId });
+    })
+    .catch((err) => {
+      console.log('error from login action', err);
+    });
+};
+       
 
-    }
+    
     
 
 
