@@ -61,15 +61,13 @@ class BookmarkCardsContainer extends Component {
   }
 
   //componentWilLMount has been deprecated - need to change
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAllBookmarks();
   }
 
   render() {
     const bookmarkList = this.props.bookmarkList;
     const getAllBookmarks = this.props.getAllBookmarks;
-
-
 
     if (!bookmarkList.length)
       return (
@@ -81,31 +79,20 @@ class BookmarkCardsContainer extends Component {
     // into the cards for the currenly displayed category.
     //map over bookmarkList and pass in props
     else {
-      console.log("bookmarkList", bookmarkList)
       const bookmarkCardsCollection = bookmarkList.map((bookmark) => {
-         <BookmarkCard title={bookmark.title} />;
+        return <BookmarkCard title={bookmark.title} />;
       });
-      console.log("bookmarkCardsCollection", bookmarkCardsCollection);
+
       // return elements to be added to the DOM
-      return (<div>
-    
-      <button onClick={this.props.addBookmark}>Button to get all</button>
-       <div className="bookmardCardsContainer">
-        {bookmarkCardsCollection}
-      
-      </div>
-      </div>
-      )
+      return (
+        <div className="bookmarkCardsContainer">
+          <button onClick={getAllBookmarks}>Load All Bookmarks</button>
+          {bookmarkCardsCollection}
+        </div>
+      );
     }
   }
 }
-      
-      
-  
-
-
-
-
 
 /**
  * export template:
