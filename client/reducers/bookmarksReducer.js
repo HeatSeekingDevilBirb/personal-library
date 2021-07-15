@@ -69,6 +69,14 @@ const bookmarksReducer = (state = initialState, action) => {
         loggedInUser: action.payload,
       };
 
+    case types_enum.EDIT_BOOKMARK:
+      console.log('EDIT BOOKMARK PAYLOAD: ', action.payload);
+      bookmark = action.payload;
+      return {
+        ...state,
+        bookmarks: [...state.bookmarks],
+      };
+
     default: {
       return state;
     }
