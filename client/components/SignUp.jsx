@@ -4,14 +4,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 
 const SignUp = () => {
-    const paperStyle={padding:20, width:280, height:'70vh', margin:'20 auto'}
+    const paperStyle={padding:20, width:280, height:'70vh', margin:'0'}
     const avatarStyle={backgroundColor: 'green'}
     const headerStyle={margin: 0}
     const checkboxStyle={fontSize: '8px'}
     return(
         <Grid align='center'>
             
-        <Paper elevation={10} style={paperStyle}>
+        <Paper style={paperStyle}>
             <Grid align='center'>
         <Avatar style={avatarStyle}><AddCircleOutlineOutlinedIcon/></Avatar>
          <h2 style={headerStyle}>Sign Up</h2>

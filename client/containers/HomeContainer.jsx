@@ -11,6 +11,7 @@ import * as actions from '../actions/actions';  // import actions from action cr
 import { Switch, Route } from 'react-router';
 import Login from '../components/Login';
 import SignUp from '../components/SignUp';
+import SignInUpContainer from './SignInUpContainer';
 /**
  * import child react components/containers here
  * template:
@@ -147,6 +148,9 @@ class HomeContainer extends Component {
         </Switch>
         <Switch>
              <Route exact path='/signup' component={()=> <SignUp/>}/>
+           </Switch>
+           <Switch>
+             <Route exact path='/signinup' component={()=> <SignInUpContainer/>}/>
            </Switch>
      
         

@@ -3,8 +3,10 @@ import {Grid, Paper, Avatar, TextField, FormControlLabel, Checkbox, Button, Typo
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 
+
 const Login = () => {
-    const paperStyle={padding:20, width:280, height:'70vh', margin:'20 auto'}
+    
+    const paperStyle={padding:20, width:280, height:'70vh', margin:'0'}
     const fieldStyle={margin: '8px 0'}
 
     const avatarStyle={backgroundColor: 'green'}
@@ -15,7 +17,7 @@ const Login = () => {
     return (
         <Grid align='center'>
             
-            <Paper elevation={10} style={paperStyle}>
+            <Paper style={paperStyle}>
                 <Grid align='center'>
             <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
              <h2>Sign In</h2>
@@ -39,7 +41,7 @@ const Login = () => {
                     <Link href='#'>Forgot password ?</Link>
                 </Typography>
                 <Typography> Do you have an account ?
-                    <Link href='#'>Sign Up</Link>
+                    <Link href='#' onClick={()=>handleChange('event', 1)}>Sign In</Link>
                 </Typography>
                 
 

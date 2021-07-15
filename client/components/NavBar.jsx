@@ -12,6 +12,7 @@ import MenuButton from './MenuButton'
 
 
 
+
 const useStyles = makeStyles(theme => ({
   menuButton: {
     color: "#fafafa",
@@ -38,7 +39,7 @@ const Navbar = () => {
       <Link to='/' className={classes.title}>
         Title</Link></Typography>
     <Typography variant='h6' className={classes.title}>
-    <Link to='/' className={classes.title}>Category 1</Link></Typography>
+    <Link to='/signinup' className={classes.title}>Category 1</Link></Typography>
     <Typography variant='h6' className={classes.title}>Category 2</Typography>
     <Typography variant='h6' className={classes.title}>Category 3</Typography>
     <Typography variant='h6' className={classes.title}>Category 4</Typography>
