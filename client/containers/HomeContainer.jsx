@@ -6,8 +6,8 @@
  * 
 \********************************************/
 import React, { Component } from 'react';
-import { connect } from 'react-redux';          // required for mapStateToProps / mapDispatchToProps
-import * as actions from '../actions/actions';  // import actions from action creators file
+import { connect } from 'react-redux'; // required for mapStateToProps / mapDispatchToProps
+import * as actions from '../actions/actions'; // import actions from action creators file
 import { Switch, Route } from 'react-router';
 import Login from '../components/Login';
 import SignUp from '../components/SignUp';
@@ -50,24 +50,30 @@ const mapDispatchToProps = (dispatch) => {
   // create functions that will dispatch action creators
   return {
     switchUser: (newUserId) => {
-      if (DEBUG) //console.log(`HomeContainer: mapDispatchToProps: switchUser: ${newUserId}`);
-      dispatch(actions.switchUser_ActionCreator(newUserId));
+      if (DEBUG)
+        //console.log(`HomeContainer: mapDispatchToProps: switchUser: ${newUserId}`);
+        dispatch(actions.switchUser_ActionCreator(newUserId));
     },
     getCurrentUser: () => {
-      if (DEBUG) //console.log(`HomeContainer: mapDispatchToProps: getCurrentUser: `);
-      dispatch(actions.getCurrentUser_ActionCreator());
+      if (DEBUG)
+        //console.log(`HomeContainer: mapDispatchToProps: getCurrentUser: `);
+        dispatch(actions.getCurrentUser_ActionCreator());
     },
     updateAllCategories: (categoriesList) => {
-      if (DEBUG) //console.log(`HomeContainer: mapDispatchToProps: updateAllCategories:`);
-      if (DEBUG) //console.log(categoriesList)
+      if (DEBUG)
+        if (DEBUG)
+          //console.log(`HomeContainer: mapDispatchToProps: updateAllCategories:`);
+          //console.log(categoriesList)
 
-      dispatch(actions.updateAllCategories_ActionCreator(categoriesList));
+          dispatch(actions.updateAllCategories_ActionCreator(categoriesList));
     },
     updateBookmarksByCategory: (categoriesList) => {
-      if (DEBUG) //console.log(`HomeContainer: mapDispatchToProps: updateBookmarksByCategory:`);
-      if (DEBUG) //console.log(bookmarksList)
+      if (DEBUG)
+        if (DEBUG)
+          //console.log(`HomeContainer: mapDispatchToProps: updateBookmarksByCategory:`);
+          //console.log(bookmarksList)
 
-      dispatch(actions.updateBookmarksByCategory_ActionCreator(bookmarksList));
+          dispatch(actions.updateBookmarksByCategory_ActionCreator(bookmarksList));
     },
   };
 };
@@ -103,7 +109,7 @@ class HomeContainer extends Component {
         console.log(error.log);
       });
 
-      //console.log(`HomeContainer: componentDidMount: this.props.userId: ${this.props.userId}`)
+    //console.log(`HomeContainer: componentDidMount: this.props.userId: ${this.props.userId}`)
 
     fetch(`/api/bookmarks/${this.props.userId}/1`)
       .then((response) => response.json())
@@ -113,7 +119,7 @@ class HomeContainer extends Component {
 
         this.props.updateBookmarksByCategory(data);
       })
-      .catch(error => {
+      .catch((error) => {
         // console.log(error.log);
       });
 
@@ -152,25 +158,23 @@ class HomeContainer extends Component {
           show={this.state.setExpanded}
           onClose={() => this.HandleExpandClick()}
         />
-        </div>
 
-        <div className='outerBox'>
+        <div className="outerBox">
           <Switch>
-          <Route exact path='/login' component={()=> <Login/>}/>
-        </Switch>
-        <Switch>
-             <Route exact path='/signup' component={()=> <SignUp/>}/>
-           </Switch>
-           <Switch>
-             <Route exact path='/signinup' component={()=> <SignInUpContainer/>}/>
-           </Switch>
-     
-        
-        <Switch>
-          <Route exact path='/' component={() => <BookmarkCardsContainer/>}/>
-           </Switch>
-           
+            <Route exact path="/login" component={() => <Login />} />
+          </Switch>
+          <Switch>
+            <Route exact path="/signup" component={() => <SignUp />} />
+          </Switch>
+          <Switch>
+            <Route exact path="/signinup" component={() => <SignInUpContainer />} />
+          </Switch>
+
+          <Switch>
+            <Route exact path="/" component={() => <BookmarkCardsContainer />} />
+          </Switch>
         </div>
+      </div>
     );
   }
 }
