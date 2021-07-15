@@ -44,7 +44,8 @@ export default function BookmarkCard(props) {
             </CardContent>
             <CardActions disableSpacing={false} >
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
-      <Button variant='outlined'>What Should I Do?</Button>
+      <button onClick={() => props.deleteBookmark(id)}>Delete</button>
+      <button onClick={() => props.editBookmark(id)}>Edit</button>
       {/* </CardActions> */}
       <button
         className='btn btn-close'
