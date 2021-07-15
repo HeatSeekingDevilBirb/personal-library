@@ -8,6 +8,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';          // required for mapStateToProps / mapDispatchToProps
 import * as actions from '../actions/actions';  // import actions from action creators file
+import { Switch, Route } from 'react-router';
+import Login from '../components/Login';
+import SignUp from '../components/SignUp';
+import SignInUpContainer from './SignInUpContainer';
 /**
  * import child react components/containers here
  * template:
@@ -138,8 +142,23 @@ class HomeContainer extends Component {
     // return elements to be added to the DOM
     return(
       <div className="homeContainer">
-        {/* <h1>Home Container</h1> */}
-        <BookmarkCardsContainer />
+        <div className='outerBox'>
+          <Switch>
+          <Route exact path='/login' component={()=> <Login/>}/>
+        </Switch>
+        <Switch>
+             <Route exact path='/signup' component={()=> <SignUp/>}/>
+           </Switch>
+           <Switch>
+             <Route exact path='/signinup' component={()=> <SignInUpContainer/>}/>
+           </Switch>
+     
+        
+        <Switch>
+          <Route exact path='/' component={() => <BookmarkCardsContainer/>}/>
+           </Switch>
+           
+        </div>
       </div>
     );
   }
