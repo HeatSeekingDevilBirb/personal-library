@@ -47,14 +47,8 @@ const Login = ({handleChange}) => {
     .catch((err) => {
       console.log('error from login action', err);
     });
+    
 };
-       
-
-    
-    
-
-
-
     return (
         <Grid align='center'>
             
@@ -97,7 +91,11 @@ const Login = ({handleChange}) => {
                
                 <Button type='submit' color='primary' fullWidth variant='contained' style={buttonStyle}>
                     Sign In
+                    
+                   
                 </Button>
+                
+                
                 </form>
                 <Typography>
                     <Link to='/signinup'>Forgot password ?</Link>
