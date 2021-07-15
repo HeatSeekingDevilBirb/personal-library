@@ -18,19 +18,19 @@ const initialState = {
 // declare the reducer
 const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types_enum.UPDATE_ALL_CATEGORIES:
-      // logic to get all bookmarks for the current user
-      //console.log(`categoriesReducer: UPDATE_ALL_CATEGORIES:`);
-      //console.log(action.payload);
+  case types_enum.UPDATE_ALL_CATEGORIES:
+    // logic to get all bookmarks for the current user
+    //console.log(`categoriesReducer: UPDATE_ALL_CATEGORIES:`);
+    //console.log(action.payload);
 
-      return {
-        ...state,
-        allCategories: action.payload,
-      };
+    return {
+      ...state,
+      allCategories: action.payload,
+    };
 
-    default: {
-      return state;
-    }
+  default: {
+    return state;
+  }
   }
 };
 

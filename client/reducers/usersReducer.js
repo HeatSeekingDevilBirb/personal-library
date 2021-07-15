@@ -18,29 +18,29 @@ const initialState = {
 // declare the reducer
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types_enum.GET_CURRENT_USER:
-      // logic to find current user here
-      const currentUser = 1;
+  case types_enum.GET_CURRENT_USER:
+    // logic to find current user here
+    const currentUser = 1;
 
-      return {
-        ...state,
-        userId: currentUser,
-      };
+    return {
+      ...state,
+      userId: currentUser,
+    };
 
-    case types_enum.SWITCH_USER:
-      // get User info from database
-      const newUserId = action.payload;
-      const newUserName = `User ${newUserId}`;
+  case types_enum.SWITCH_USER:
+    // get User info from database
+    const newUserId = action.payload;
+    const newUserName = `User ${newUserId}`;
 
-      return {
-        ...state,
-        userId: newUserId,
-        userName: newUserName,
-      };
+    return {
+      ...state,
+      userId: newUserId,
+      userName: newUserName,
+    };
 
-    default: {
-      return state;
-    }
+  default: {
+    return state;
+  }
   }
 };
 

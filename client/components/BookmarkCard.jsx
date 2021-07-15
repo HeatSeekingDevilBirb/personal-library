@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import EditBookMarkModal from './modals/EditBookMarkModal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,12 +23,9 @@ export default function BookmarkCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const { title, id, url, thumbnail, caption, category_id, user_id } =
+    props.bookMark;
 
-  const { title, url, thumbnail, caption, id} = props.bookMark;
-  // console.log('ID in BookmarkCard', id)
   return (
     <Card className={classes.root}>
       <CardHeader title={title} subheader={caption} />
@@ -44,8 +42,19 @@ export default function BookmarkCard(props) {
             <CardActions disableSpacing={false} >
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
       <button onClick={() => props.deleteBookmark(id)}>Delete</button>
-      <button onClick={() => props.editBookmark(id)}>Edit</button>
       {/* </CardActions> */}
+      <button
+        className='buttonEditBookmark'
+        type='button'
+        onClick={() => setExpanded(true)}
+      >
+        Edit
+      </button>
+      <EditBookMarkModal 
+        bookMark={props.bookMark}
+        show={expanded}
+        onClose={() => setExpanded(false)}
+      />
     </Card>
   );
 }
