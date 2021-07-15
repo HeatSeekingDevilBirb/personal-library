@@ -17,6 +17,7 @@
 \********************************************/
 
 // import actionType constants
+import { types } from '@babel/core';
 import * as types_enum from '../constants/actionTypes';
 
 // ================================== //
@@ -125,7 +126,7 @@ export const editBookmark = (formData) => {
     body: formData,
   })
     .then((response) => response.json())
-    .then(() => {
+    .then((response) => {
       editedbookmark = response;
       console.log('editedbookmark', editedbookmark);
     })
@@ -137,3 +138,45 @@ export const updateBookmarksByCategory_ActionCreator = (bookmarkList) => ({
   type: types_enum.UPDATE_BOOKMARKS_BY_CATEGORY,
   payload: bookmarkList,
 });
+
+export const signupNewUser = (formData) => (dispatch) => {
+  let idFromSQLData;
+  console.log('formData', formData);
+  return fetch('api/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      idFromSQLData = response;
+      console.log('response', response);
+      dispatch({ type: types_enum.SIGNUP });
+    })
+    .catch((err) => {
+      console.log('error from signup action', err);
+    });
+};
+
+export const signinUser = (formData) => (dispatch) => {
+  let idFromSQLData;
+  console.log('formData', formData);
+  return fetch('api/signin', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      idFromSQLData = response;
+      console.log('response', response);
+      dispatch({ type: types_enum.LOGIN, payload: formData });
+    })
+    .catch((err) => {
+      console.log('error from login action', err);
+    });
+};
