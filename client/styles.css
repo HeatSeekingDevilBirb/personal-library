@@ -1,11 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 
 .bookmardCardsContainer{
-  /* display: flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: start;
   background-color: lightgrey;
-  height: vh; */
+  height: vh;
 
   
   display: grid;
@@ -13,3 +18,4 @@
   grid-column-gap: 6px;
   grid-row-gap:6px;
 }
+

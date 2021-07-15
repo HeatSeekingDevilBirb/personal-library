@@ -53,6 +53,14 @@ const bookmarksReducer = (state = initialState, action) => {
         ...state,
         bookmarks: [...state.bookmarks, bookmark],
       };
+
+    case types_enum.DELETE_BOOKMARK:
+      console.log('Action.payload', action.payload);
+      return {
+        ...state,
+        bookmarks: state.bookmarks.filter((bookMarks) => bookMarks.id !== action.payload),
+      };
+
     default: {
       return state;
     }

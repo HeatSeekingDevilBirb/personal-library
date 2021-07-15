@@ -108,11 +108,11 @@ apiController.addBookmark = (req, res, next) => {
 };
 
 apiController.removeBookmark = (req, res, next) => {
-  const { bookmark_id } = req.body; //.bookmark_id;
+  const { id } = req.body; //.bookmark_id;
   const sqlQuery = {
     text: `DELETE FROM bookmarks 
             WHERE bookmarks.id = $1`,
-    values: [bookmark_id],
+    values: [id],
   };
 
   //console.log(sqlQuery);
@@ -128,6 +128,7 @@ apiController.removeBookmark = (req, res, next) => {
 };
 
 apiController.editBookmark = (req, res, next) => {
+  console.log('Reached the Backend apiController on Edit')
   const { title, url, thumbnail, caption, category_id, user_id, bookmark_id } = req.body;
   console.log(req.body);
   const sqlQuery = {

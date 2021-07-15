@@ -26,8 +26,8 @@ export default function BookmarkCard(props) {
     setExpanded(!expanded);
   };
 
-  const { title, url, thumbnail, caption } = props;
-
+  const { title, url, thumbnail, caption, id} = props.bookMark;
+  // console.log('ID in BookmarkCard', id)
   return (
     <Card className={classes.root}>
       <CardHeader title={title} subheader={caption} />
@@ -43,7 +43,8 @@ export default function BookmarkCard(props) {
             </CardContent>
             <CardActions disableSpacing={false} >
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
-      <Button variant="outlined">What Should I Do?</Button>
+      <button onClick={() => props.deleteBookmark(id)}>Delete</button>
+      <button onClick={() => props.editBookmark(id)}>Edit</button>
       {/* </CardActions> */}
     </Card>
   );
