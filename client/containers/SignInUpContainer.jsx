@@ -10,7 +10,7 @@ import SignUp from '../components/SignUp';
 
 
 const SignInUpContainer = () => {
-    const [value,setValue]=useState(0)
+    const [value, newValue] = useState(0)
     const handleChange = (event, newValue) => {
         setValue(newValue)
     };
@@ -53,7 +53,7 @@ const paperStyle={width: 320, margin: "20px auto"}
     <Tab label="Sign Up" />
   </Tabs>
   <TabPanel value={value} index={0}>
-      <Login/></TabPanel>
+      <Login handleChange={handleChange}/></TabPanel>
   <TabPanel value={value} index={1}><SignUp/></TabPanel>
 </Paper>
 

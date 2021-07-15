@@ -4,7 +4,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 
 
-const Login = () => {
+const Login = ({handleChange}) => {
     
     const paperStyle={padding:20, width:280, height:'70vh', margin:'0'}
     const fieldStyle={margin: '8px 0'}
