@@ -12,10 +12,7 @@ import * as types_enum from '../constants/actionTypes'
 const Login = ({handleChange}) => {
 
     const dispatch = useDispatch()
-    
-  
-   
-    
+       
     const paperStyle={padding:20, width:280, height:'70vh', margin:'0'}
     const fieldStyle={margin: '8px 0'}
 
@@ -91,8 +88,7 @@ const Login = ({handleChange}) => {
                
                 <Button type='submit' color='primary' fullWidth variant='contained' style={buttonStyle}>
                     Sign In
-                    
-                   
+                                       
                 </Button>
                 
                 
