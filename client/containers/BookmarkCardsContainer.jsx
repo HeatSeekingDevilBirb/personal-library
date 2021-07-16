@@ -87,6 +87,17 @@ class BookmarkCardsContainer extends Component {
     if (!bookmarkList.length)
       return (
         <div>
+        <Button
+        className="buttonAddBookmark"
+        type="button"
+        onClick={() => this.HandleExpandClick()}
+      >
+        Add Bookmark
+      </Button>
+      <CreateBookmarkModal
+        show={this.state.setExpanded}
+        onClose={() => this.HandleExpandClick()}
+      />
           <h1>Loading data, please wait...</h1>
         </div>
       );
