@@ -56,7 +56,7 @@ class CreateBookmarkModal extends React.Component {
     if (!this.props.show) return null;
 
     return (
-      <div className="modal-list">
+      <div className="modal">
         <div className="modal-content">
           <div className="modal-header">
             <h4 className="modal-title">Create Bookmark</h4>
