@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
+import Button from '@material-ui/core/Button';
 
 const mapDispatchToProps = (dispatch) => ({
   addBookmark: (newBookmark) => dispatch(actions.addBookmark(newBookmark)),
@@ -122,15 +123,27 @@ class CreateBookmarkModal extends React.Component {
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
-              <button className="modal-addButton" type="submit" onClick={this.handleSubmit}>
+              <Button
+                variant="contained"
+                color="primary"
+                className="modal-addButton"
+                type="submit"
+                onClick={this.handleSubmit}
+              >
                 Add Bookmark
-              </button>
+              </Button>
             </form>
           </div>
           <div className="modal-footer">
-            <button className="modal-closeButton" type="button" onClick={this.props.onClose}>
+            <Button
+              variant="contained"
+              color="default"
+              className="modal-closeButton"
+              type="button"
+              onClick={this.props.onClose}
+            >
               Close
-            </button>
+            </Button>
           </div>
         </div>
       </div>

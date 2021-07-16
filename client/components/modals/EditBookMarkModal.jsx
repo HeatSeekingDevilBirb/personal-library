@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/actions';
-// import BookmarkCard from '../BookmarkCard';
+import Button from '@material-ui/core/Button';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -16,8 +16,7 @@ class EditBookMarkModal extends React.Component {
   constructor(props) {
     super(props);
 
-    const { id, title, url, thumbnail, caption, category_id, user_id } =
-      props.bookMark;
+    const { id, title, url, thumbnail, caption, category_id, user_id } = props.bookMark;
 
     this.state = {
       bookMarkObj: {
@@ -35,7 +34,6 @@ class EditBookMarkModal extends React.Component {
     this.SubmitHandler = this.SubmitHandler.bind(this);
     this.resetState = this.resetState.bind(this);
   }
-
 
   // submit Handler here
   SubmitHandler(event) {
@@ -67,96 +65,103 @@ class EditBookMarkModal extends React.Component {
       return null;
     }
     return (
-      <div className='modal'>
-        <div className='modal-content'>
-          <div className='modal-header'>
-            <h4 className='modal-title'>Edit Bookmark</h4>
+      <div className="modal">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h4 className="modal-title">Edit Bookmark</h4>
           </div>
-          <div className='modal-body'>
+          <div className="modal-body">
             <form onSubmit={this.SubmitHandler}>
-              <label className='modal-fieldLabel'>
+              <label className="modal-fieldLabel">
                 Title:
                 <input
-                  className='modal-field'
+                  className="modal-field"
                   placeholder={this.state.bookMarkObj.title}
-                  type='text'
-                  name='title'
+                  type="text"
+                  name="title"
                   value={this.state.bookMarkObj.title}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
-              <label className='modal-fieldLabel'>
+              <label className="modal-fieldLabel">
                 Url:
                 <input
-                  className='modal-field'
+                  className="modal-field"
                   placeholder={this.state.bookMarkObj.url}
-                  type='text'
-                  name='url'
+                  type="text"
+                  name="url"
                   value={this.state.bookMarkObj.url}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
-              <label className='modal-fieldLabel'>
+              <label className="modal-fieldLabel">
                 Thumbnail:
                 <input
-                  className='modal-field'
+                  className="modal-field"
                   placeholder={this.state.bookMarkObj.thumbnail}
-                  type='text'
-                  name='thumbnail'
+                  type="text"
+                  name="thumbnail"
                   value={this.state.bookMarkObj.thumbnail}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
-              <label className='modal-fieldLabel'>
+              <label className="modal-fieldLabel">
                 caption:
                 <input
-                  className='modal-field'
+                  className="modal-field"
                   placeholder={this.state.bookMarkObj.caption}
-                  type='text'
-                  name='caption'
+                  type="text"
+                  name="caption"
                   value={this.state.bookMarkObj.caption}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
-              <label className='modal-fieldLabel'>
+              <label className="modal-fieldLabel">
                 Category ID:
                 <input
-                  className='modal-field'
+                  className="modal-field"
                   placeholder={this.state.bookMarkObj.category_id}
-                  type='number'
-                  name='category_id'
+                  type="number"
+                  name="category_id"
                   value={this.state.bookMarkObj.category_id}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
-              <label className='modal-fieldLabel'>
+              <label className="modal-fieldLabel">
                 User ID:
                 <input
-                  className='modal-field'
+                  className="modal-field"
                   placeholder={this.state.bookMarkObj.user_id}
-                  type='number'
-                  name='user_id'
+                  type="number"
+                  name="user_id"
                   value={this.state.bookMarkObj.user_id}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
-              <button
-                className='modal-editButton'
-                type='submit'
+              <Button
+                variant="contained"
+                color="primary"
+                className="modal-editButton"
+                type="submit"
                 onClick={this.SubmitHandler}
               >
                 Save Changes
-              </button>
+              </Button>
             </form>
           </div>
-          <div className='modal-footer'>
-            <button
-              className='modal-closeButton'
-              type='button'
-              onClick={this.props.onClose}
+          <div className="modal-footer">
+            <Button
+              variant="contained"
+              color="default"
+              className="modal-closeButton"
+              type="button"
+              onClick={() => {
+                this.props.onClose();
+                this.resetState();
+              }}
             >
               Close
-            </button>
+            </Button>
           </div>
         </div>
       </div>
