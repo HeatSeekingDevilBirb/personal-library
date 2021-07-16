@@ -42,11 +42,7 @@ export default function BookmarkCard(props) {
             <CardActions disableSpacing={false} >
                 {/* Dummy tag (example of a tag would be Sport, Programming etc) */}
       <button onClick={() => props.deleteBookmark(id)}>Delete</button>
-<<<<<<< HEAD
-      <button onClick={() => props.editBookmark(id)}>Edit</button>
       </CardActions>
-=======
-      {/* </CardActions> */}
       <button
         className='buttonEditBookmark'
         type='button'
@@ -59,7 +55,6 @@ export default function BookmarkCard(props) {
         show={expanded}
         onClose={() => setExpanded(false)}
       />
->>>>>>> dev
     </Card>
   );
 }

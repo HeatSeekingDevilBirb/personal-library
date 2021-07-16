@@ -38,9 +38,6 @@ export const GET_ALL_BOOKMARKS = 'GET_ALL_BOOKMARKS';
 export const UPDATE_BOOKMARKS_BY_CATEGORY = 'UPDATE_BOOKMARKS_BY_CATEGORY';
 export const ADD_BOOKMARK = 'ADD_BOOKMARK';
 export const DELETE_BOOKMARK = 'DELETE_BOOKMARK';
-<<<<<<< HEAD
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
-=======
 export const EDIT_BOOKMARK = 'EDIT BOOKMARK';
->>>>>>> dev

@@ -77,7 +77,7 @@ export const getAllBookmarks_ActionCreator = () => (dispatch) => {
       // console.log('get all categries api call', response);
       dispatch({
         type: types_enum.GET_ALL_BOOKMARKS,
-        payload: response
+        payload: response,
       });
     })
     .catch(console.error);
@@ -112,14 +112,14 @@ export const deleteBookmark = (id) => (dispatch) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      id: id
+      id: id,
     }),
   })
     .then((response) => response.json())
     .then((response) => {
       dispatch({
         type: types_enum.DELETE_BOOKMARK,
-        payload: id
+        payload: id,
       });
     })
     .catch((err) => {
@@ -137,17 +137,11 @@ export const editBookmark = (formData) => (dispatch) => {
     body: JSON.stringify(formData),
   })
     .then((response) => response.json())
-<<<<<<< HEAD
-    .then((response) => {
-      editedbookmark = response;
-      console.log('editedbookmark', editedbookmark);
-=======
     .then(() => {
       dispatch({
         type: types_enum.EDIT_BOOKMARK,
         payload: formData,
       });
->>>>>>> dev
     })
     .catch((err) => {
       // dispatch errors here later...
@@ -158,7 +152,6 @@ export const editBookmark = (formData) => (dispatch) => {
 export const updateBookmarksByCategory_ActionCreator = (bookmarkList) => ({
   type: types_enum.UPDATE_BOOKMARKS_BY_CATEGORY,
   payload: bookmarkList,
-<<<<<<< HEAD
 });
 
 export const signupNewUser = (formData) => (dispatch) => {
@@ -202,6 +195,3 @@ export const signinUser = (formData) => (dispatch) => {
       console.log('error from login action', err);
     });
 };
-=======
-});
->>>>>>> dev
