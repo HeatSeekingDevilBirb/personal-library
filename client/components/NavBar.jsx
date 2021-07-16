@@ -38,8 +38,8 @@ const Navbar = () => {
     <Typography variant="h6" className={classes.title}>
       <Link to='/' className={classes.title}>
         All Bookmarks</Link></Typography>
-    <Typography variant='h6' className={classes.title}>
-    <Link to='/signinup' className={classes.title}>Category 1</Link></Typography>
+    {/* <Typography variant='h6' className={classes.title}>
+    <Link to='/signinup' className={classes.title}>Category 1</Link></Typography> */}
     {/* <Typography variant='h6' className={classes.title}>Category 2</Typography>
     <Typography variant='h6' className={classes.title}>Category 3</Typography>
     <Typography variant='h6' className={classes.title}>Category 4</Typography> */}

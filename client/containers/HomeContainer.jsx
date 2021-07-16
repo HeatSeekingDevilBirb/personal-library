@@ -147,18 +147,6 @@ class HomeContainer extends Component {
     // return elements to be added to the DOM
     return (
       <div className="homeContainer">
-        <button
-          className="buttonAddBookmark"
-          type="button"
-          onClick={() => this.HandleExpandClick()}
-        >
-          Add Bookmark
-        </button>
-        <CreateBookmarkModal
-          show={this.state.setExpanded}
-          onClose={() => this.HandleExpandClick()}
-        />
-
         <div className="outerBox">
           <Switch>
             <Route exact path="/login" component={() => <Login />} />
