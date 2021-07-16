@@ -37,20 +37,16 @@ const Navbar = () => {
     <MenuButton/>
     <Typography variant="h6" className={classes.title}>
       <Link to='/' className={classes.title}>
-        Title</Link></Typography>
-    <Typography variant='h6' className={classes.title}>
-    <Link to='/signinup' className={classes.title}>Category 1</Link></Typography>
-    <Typography variant='h6' className={classes.title}>Category 2</Typography>
+        All Bookmarks</Link></Typography>
+    {/* <Typography variant='h6' className={classes.title}>
+    <Link to='/signinup' className={classes.title}>Category 1</Link></Typography> */}
+    {/* <Typography variant='h6' className={classes.title}>Category 2</Typography>
     <Typography variant='h6' className={classes.title}>Category 3</Typography>
-    <Typography variant='h6' className={classes.title}>Category 4</Typography>
+    <Typography variant='h6' className={classes.title}>Category 4</Typography> */}
     <Button color="inherit">
-      <Link className={classes.menuButton} to='/signup'>
+      <Link className={classes.menuButton} to='/signinup'>
+      Sign In /
       Sign Up</Link>
-      </Button>
-      <Button color='inherit'>
-      <Link className={classes.menuButton} to='/login'>
-      SignIn
-      </Link>
       </Button>
   </Toolbar>
     </Appbar>

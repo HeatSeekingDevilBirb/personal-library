@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; // required for mapStateToProps / mapDispatchToProps
 import * as actions from '../actions/actions'; // import actions from action creators file
+
 /**
  * import child react components/containers here
  * template:
@@ -16,6 +17,7 @@ import * as actions from '../actions/actions'; // import actions from action cre
  */
 import Button from '@material-ui/core/Button'; // required for access to material-ui components
 import BookmarkCard from '../components/BookmarkCard';
+import CreateBookmarkModal from '../components/CreateBookmarkModal';
 
 // flag to toggle debug logs
 const DEBUG = true;
@@ -60,8 +62,17 @@ const mapDispatchToProps = (dispatch) => ({
 class BookmarkCardsContainer extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      setExpanded: false,
+    };
+
+    this.HandleExpandClick = this.HandleExpandClick.bind(this);
   }
 
+  HandleExpandClick() {
+    this.setState({ setExpanded: !this.state.setExpanded });
+  }
   //componentWilLMount has been deprecated - need to change
   componentDidMount() {
     this.props.getAllBookmarks();
@@ -97,9 +108,23 @@ class BookmarkCardsContainer extends Component {
 
       // return elements to be added to the DOM
       return (
+        <div>
         <div className="bookmarkCardsContainer">
-          <Button onClick={getAllBookmarks}>Load All Bookmarks</Button>
+         <button
+          className="buttonAddBookmark"
+          type="button"
+          onClick={() => this.HandleExpandClick()}
+        >
+          Add Bookmark
+        </button>
+        <CreateBookmarkModal
+          show={this.state.setExpanded}
+          onClose={() => this.HandleExpandClick()}
+        />
+            
+          
           {bookmarkCardsCollection}
+          </div>
         </div>
       );
        // Need To create an Edit Button 

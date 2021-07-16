@@ -17,7 +17,9 @@
 \********************************************/
 
 // import actionType constants
+
 import * as types_enum from '../constants/actionTypes';
+import store from '../store';
 
 // ================================== //
 // TEST action creators
@@ -66,14 +68,16 @@ export const switchCategory_ActionCreator = (nextCategory) => ({
 // ---------------------------------- //
 export const getAllBookmarks_ActionCreator = () => (dispatch) => {
   // console.log('getAllBookmarks');
-
-  fetch('api/bookmarks/1/1') // request
+  let currentStore = store.getState();
+  let loggedInUser = currentStore.bookmarks.loggedInUser;
+  console.log('LoggedInUser', loggedInUser);
+  fetch(`api/bookmarks/${loggedInUser}/1`) // request
     .then((response) => response.json())
     .then((response) => {
       // console.log('get all categries api call', response);
       dispatch({
         type: types_enum.GET_ALL_BOOKMARKS,
-        payload: response
+        payload: response,
       });
     })
     .catch(console.error);
@@ -108,14 +112,14 @@ export const deleteBookmark = (id) => (dispatch) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      id: id
+      id: id,
     }),
   })
     .then((response) => response.json())
     .then((response) => {
       dispatch({
         type: types_enum.DELETE_BOOKMARK,
-        payload: id
+        payload: id,
       });
     })
     .catch((err) => {
@@ -149,3 +153,45 @@ export const updateBookmarksByCategory_ActionCreator = (bookmarkList) => ({
   type: types_enum.UPDATE_BOOKMARKS_BY_CATEGORY,
   payload: bookmarkList,
 });
+
+export const signupNewUser = (formData) => (dispatch) => {
+  let idFromSQLData;
+  console.log('formData', formData);
+  return fetch('api/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      idFromSQLData = response;
+      console.log('response', response);
+      dispatch({ type: types_enum.SIGNUP });
+    })
+    .catch((err) => {
+      console.log('error from signup action', err);
+    });
+};
+
+export const signinUser = (formData) => (dispatch) => {
+  let idFromSQLData;
+  console.log('formData', formData);
+  return fetch('api/signin', {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      idFromSQLData = response;
+      console.log('response', response);
+      dispatch({ type: types_enum.LOGIN, payload: formData });
+    })
+    .catch((err) => {
+      console.log('error from login action', err);
+    });
+};

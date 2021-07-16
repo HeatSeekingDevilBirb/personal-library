@@ -87,14 +87,7 @@ apiController.getBookmarks = (req, res, next) => {
 };
 
 apiController.addBookmark = (req, res, next) => {
-  const {
-    title,
-    url,
-    thumbnail,
-    caption,
-    category_id,
-    user_id
-  } = req.body;
+  const { title, url, thumbnail, caption, category_id, user_id } = req.body;
   console.log(`you got to apiController.addBookmark: ${req.body}`);
   const sqlQuery = {
     text: `INSERT INTO bookmarks (title, url, thumbnail, caption, category_id, user_id)
@@ -115,9 +108,7 @@ apiController.addBookmark = (req, res, next) => {
 };
 
 apiController.removeBookmark = (req, res, next) => {
-  const {
-    id
-  } = req.body; //.bookmark_id;
+  const { id } = req.body; //.bookmark_id;
   const sqlQuery = {
     text: `DELETE FROM bookmarks 
             WHERE bookmarks.id = $1`,
@@ -138,15 +129,7 @@ apiController.removeBookmark = (req, res, next) => {
 
 apiController.editBookmark = (req, res, next) => {
   console.log('Reached the Backend apiController on Edit');
-  const {
-    title,
-    url,
-    thumbnail,
-    caption,
-    category_id,
-    user_id,
-    id
-  } = req.body;
+  const { title, url, thumbnail, caption, category_id, user_id, id } = req.body;
   console.log(req.body);
   const sqlQuery = {
     text: `UPDATE 
