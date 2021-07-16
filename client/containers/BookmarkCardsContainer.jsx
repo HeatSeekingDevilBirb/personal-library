@@ -120,26 +120,24 @@ class BookmarkCardsContainer extends Component {
       // return elements to be added to the DOM
       return (
         <div>
-        <div className="bookmarkCardsContainer">
-         <button
-          className="buttonAddBookmark"
-          type="button"
-          onClick={() => this.HandleExpandClick()}
-        >
-          Add Bookmark
-        </button>
-        <CreateBookmarkModal
-          show={this.state.setExpanded}
-          onClose={() => this.HandleExpandClick()}
-        />
-            
-          
-          {bookmarkCardsCollection}
+          <div className="bookmarkCardsContainer">
+            <Button
+              className="buttonAddBookmark"
+              type="button"
+              onClick={() => this.HandleExpandClick()}
+            >
+              Add Bookmark
+            </Button>
+            <CreateBookmarkModal
+              show={this.state.setExpanded}
+              onClose={() => this.HandleExpandClick()}
+            />
+
+            {bookmarkCardsCollection}
           </div>
         </div>
       );
-       // Need To create an Edit Button 
-
+      // Need To create an Edit Button
     }
   }
 }
