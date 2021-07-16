@@ -87,17 +87,19 @@ class BookmarkCardsContainer extends Component {
     if (!bookmarkList.length)
       return (
         <div>
-        <Button
-        className="buttonAddBookmark"
-        type="button"
-        onClick={() => this.HandleExpandClick()}
-      >
-        Add Bookmark
-      </Button>
-      <CreateBookmarkModal
-        show={this.state.setExpanded}
-        onClose={() => this.HandleExpandClick()}
-      />
+          <Button
+            variant="contained"
+            color="primary"
+            className="buttonAddBookmark"
+            type="button"
+            onClick={() => this.HandleExpandClick()}
+          >
+            Add Bookmark
+          </Button>
+          <CreateBookmarkModal
+            show={this.state.setExpanded}
+            onClose={() => this.HandleExpandClick()}
+          />
           <h1>Loading data, please wait...</h1>
         </div>
       );
@@ -120,20 +122,18 @@ class BookmarkCardsContainer extends Component {
       // return elements to be added to the DOM
       return (
         <div>
-          <div className="bookmarkCardsContainer">
-            <Button
-              className="buttonAddBookmark"
-              type="button"
-              onClick={() => this.HandleExpandClick()}
-            >
-              Add Bookmark
-            </Button>
-            <CreateBookmarkModal
-              show={this.state.setExpanded}
-              onClose={() => this.HandleExpandClick()}
-            />
-
-            {bookmarkCardsCollection}
+          <Button
+            className="buttonAddBookmark"
+            type="button"
+            onClick={() => this.HandleExpandClick()}
+          >
+            Add Bookmark
+          </Button>
+          <CreateBookmarkModal
+            show={this.state.setExpanded}
+            onClose={() => this.HandleExpandClick()}
+          />
+          <div className="bookmarkCardsContainer">{bookmarkCardsCollection}
           </div>
         </div>
       );
